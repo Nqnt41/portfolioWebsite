@@ -1,0 +1,19 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    transition: all 300ms ease-in-out;
+}
+
+/* Scrolling */
+
+.scroll-down header {
+    transform: translate3d(0, -100%, 0);
+}
+
+.boxDetails {
+    background-color: rgba(40,40,40,0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 4px rgba(0,0,0,0.3);
+}

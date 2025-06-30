@@ -1,0 +1,40 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+.slide Image {
+    width: 20rem;
+    margin: 0 auto;
+}
+
+.slide {
+    transform: scale(0.7);
+    transition: transform 300ms;
+    opacity: 0.5;
+    z-index: 8;
+}
+
+.activeSlide {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 9
+}
+
+.arrow {
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.arrow svg {
+    transition: color 300ms;
+}
+
+.next {
+    right: 0;
+    top: 50%;
+}
+
+.prev {
+    left: 0;
+    top: 50%;
+}
