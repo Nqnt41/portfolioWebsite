@@ -156,7 +156,7 @@ export default function About( {init, el, section, setSection} ) {
     }
 
     return (
-        <div id="about" className="justify-center bg-gray-800 w-[100vw] min-h-screen p-7 pb-10">
+        <div id="about" className="justify-center bg-gray-800 w-[100vw] p-7 pb-10">
             <h1 className="fadeHidden text-6xl mb-5 text-center">About</h1>
 
             <div className="fadeHidden flex justify-center items-center text-lg gap-10 w-full">
@@ -198,9 +198,9 @@ export default function About( {init, el, section, setSection} ) {
                     </div>
 
                     <div className="flex justify-center border-black text-black">
-                        <button className={`${section === 0 ? 'bg-gray-500' : 'bg-white'} hover:bg-gray-300 border-4 p-1 cursor-pointer`} onClick={() => setSection(0) }>Languages</button>
-                        <button className={`${section === 1 ? 'bg-gray-500' : 'bg-white'} hover:bg-gray-300 border-4 border-l-0 p-1 cursor-pointer`} onClick={() => setSection(1) }>Frameworks</button>
-                        <button className={`${section === 2 ? 'bg-gray-500' : 'bg-white'} hover:bg-gray-300 border-4 border-l-0 p-1 cursor-pointer`} onClick={() => setSection(2) }>Technologies</button>
+                        <button className={`${section === 0 ? 'bg-gray-500' : 'bg-white'} hover:bg-gray-300 border-3 p-1 cursor-pointer rounded-md`} onClick={() => setSection(0) }>Languages</button>
+                        <button className={`${section === 1 ? 'bg-gray-500' : 'bg-white'} hover:bg-gray-300 border-3 border-l-0 p-1 cursor-pointer rounded-md`} onClick={() => setSection(1) }>Frameworks</button>
+                        <button className={`${section === 2 ? 'bg-gray-500' : 'bg-white'} hover:bg-gray-300 border-3 border-l-0 p-1 cursor-pointer rounded-md`} onClick={() => setSection(2) }>Technologies</button>
                     </div>
                 </div>
             </div>

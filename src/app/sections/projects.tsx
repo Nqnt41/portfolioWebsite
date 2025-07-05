@@ -8,14 +8,14 @@ import {
     AnacondaOriginal,
     ApachesparkOriginal,
     AzuresqldatabasePlain,
-    BlenderOriginal,
+    BlenderOriginal, ClionOriginal, COriginal, CplusplusOriginal,
     CsharpOriginal,
     Css3Original,
     ElectronOriginal,
     FigmaOriginal,
     FirebaseOriginal,
     GithubOriginal,
-    Html5Original,
+    Html5Original, IntellijOriginal,
     JavaOriginal,
     JavascriptOriginal,
     JsonOriginal,
@@ -23,7 +23,7 @@ import {
     KerasOriginal, MatplotlibOriginal,
     MysqlOriginal,
     NextjsOriginal,
-    PandasOriginal, PythonOriginal,
+    PandasOriginal, PythonOriginal, ReactnativeOriginal,
     ReactOriginal,
     TailwindcssOriginal, TensorflowOriginal,
     TypescriptOriginal,
@@ -87,6 +87,7 @@ const projectData: Project[] = [
         description: "This very website, built using Typescript, Next.js, and Tailwind.",
         tech: [
             { name: "Next.js", call: NextjsOriginal },
+            { name: "React.js", call: ReactOriginal },
             { name: "TypeScript", call: TypescriptOriginal },
             { name: "HTML", call: Html5Original },
             { name: "CSS", call: Css3Original },
@@ -140,6 +141,45 @@ const projectData: Project[] = [
             { name: "GitHub", call: GithubOriginal }
         ]
     },
+    {
+        name: "Music Sorter and Organizer",
+        link: "https://github.com/Nqnt41/Music-Sorter-and-Organizer",
+        image: "/images/carousel/musicSorter.JPG",
+        description: "Worked in a pair to develop a music organization program utilizing the large-scale open-source Million Song Dataset. Manipulates, stores, accesses, searches, and efficiently displays data using the Splay Tree data structure.",
+        tech: [
+            { name: "C++", call: CplusplusOriginal },
+            { name: "C", call: COriginal },
+            { name: "CLion", call: ClionOriginal },
+            { name: "GitHub", call: GithubOriginal }
+        ]
+    },
+    {
+        name: "Society of Software Developers Website",
+        link: "https://github.com/ufssd/ufssd-website",
+        image: "/images/carousel/ufssd.JPG",
+        description: "Collaborated in a seven-member Agile-Scrum team to develop the organization’s website at ufssd.org. Designed and constructed website home page and continuously managed project dependencies.",
+        tech: [
+            { name: "React.js", call: ReactOriginal },
+            { name: "JavaScript", call: JavascriptOriginal },
+            { name: "HTML", call: Html5Original },
+            { name: "CSS", call: Css3Original },
+            { name: "GitHub", call: GithubOriginal },
+            { name: "Figma", call: FigmaOriginal }
+        ]
+    },
+    {
+        name: "UF Open Source Club'\s Echologator",
+        link: "https://github.com/ufosc/Echo-Chat",
+        image: "/images/carousel/echologator.JPG",
+        description: "Joined the development of a Firestore back-end open source proximity-based chat application, Echologator. Aided the development of the application’s front-end chat communication and user profile display.",
+        tech: [
+            { name: "React Native", call: ReactnativeOriginal },
+            { name: "JavaScript", call: JavascriptOriginal },
+            { name: "HTML", call: Html5Original },
+            { name: "CSS", call: Css3Original },
+            { name: "GitHub", call: GithubOriginal },
+        ]
+    },
     // TODO: Etc lmao. million song dataset, ufssd, echologator, etc.
 ];
 
@@ -176,6 +216,8 @@ export default function Projects() {
         slidesToShow: 3,
         centerMode: true,
         centerPadding: 0,
+        swipe: false,
+        dots: true,
         nextArrow: <NextArrow/>,
         prevArrow: <PrevArrow/>,
         beforeChange: (old, next) => setImageIndex(() => next),
@@ -184,13 +226,13 @@ export default function Projects() {
     //https://react-slick.neostack.com/docs/example/center-mode
 
     return (
-        <div id="projects" className="justify-center bg-gray-800 w-[100vw] min-h-screen">
-            <h1 className="fadeHidden text-6xl mb-5 pb-10 text-center">Projects</h1>
+        <div id="projects" className="justify-center bg-gray-800 w-[100vw] pb-15">
+            <h1 className="fadeHidden text-6xl pb-6 text-center">Projects</h1>
 
-            <div className='fadeHidden w-[80%] m-auto h-auto'>
+            <div className='fadeHidden w-[85%] m-auto h-auto'>
                 <Slider {...settings}>
                     {projectData.map((project, index) => (
-                        <div key={index} className={index === imageIndex ? "slide activeSlide" : "slide"}>
+                        <div key={index} className={index === imageIndex ? "slide activeSlide" : index < imageIndex || (imageIndex == 0 && index == projectData.length - 1) ? "slide leftRotate" : "slide rightRotate"}>
                             <Image
                                 className="p-0 m-0 cursor-pointer"
                                 key={index}
@@ -200,17 +242,17 @@ export default function Projects() {
                                 height={1440}
                                 onClick={() => window.open(project.link, "_blank")}
                             />
-                            <div className={index === imageIndex ? "p-2 bg-gray-700 w-[100%] transition-opacity-100" : "opacity-0"}>
+                            <div className={`p-2 bg-gray-700 w-[100%] transitionDetails ${index === imageIndex ? "activeDetails" : index < imageIndex || (imageIndex === 0 && index === projectData.length - 1) ? "leftDetails" : "rightDetails"}`}>
                                 <h2 className="text-xl font-bold underline cursor-pointer hover:text-blue-400" onClick={() => window.open(project.link, "_blank")}>
                                     {project.name}
                                 </h2>
                                 <div>{project.description}</div>
-                                <div className="flex justify-end space-x-1 mt-2">
+                                <div className="flex justify-end space-x-1 mt-2 flex-wrap">
                                     {project.tech.map((tech, index2) => {
                                         const Icon = tech.call;
 
                                         return (
-                                            <div title={tech.name}>
+                                            <div key={tech.name} title={tech.name}>
                                                 <Icon size={40}/>
                                             </div>
                                         );
