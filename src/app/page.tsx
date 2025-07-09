@@ -4,14 +4,17 @@ import "tailwindcss";
 import "./globals.css"
 import "./navigation.css"
 
-import Background from "./sections/home.tsx";
+import Home from "./sections/home.tsx";
+import Background from "./background.tsx";
 import About from "./sections/about.tsx";
 import Projects from "./sections/projects.tsx";
 import Contact from "./sections/contact.tsx";
+import Experience from "./sections/experience.tsx";
+import Return from "./sections/return.tsx";
 
 import {useEffect, useRef, useState} from "react";
 
-export default function Home() {
+export default function Page() {
     const el = useRef(null);
     const [init, setInit] = useState(false);
     const [section, setSection] = useState(0);
@@ -79,18 +82,26 @@ export default function Home() {
                     </nav>
             </header>
 
-            <div className="fadeHidden">
+            <div className="fadeIn">
                 {/* HOME */}
-                <Background setInit={setInit} el={el}/>
+                <Home setInit={setInit} el={el}/>
 
-                {/* ABOUT */}
-                <About init={init} el={el} section={section} setSection={setSection} />
+                <div className="background">
+                    {/* ABOUT */}
+                    <About init={init} el={el} section={section} setSection={setSection} />
 
-                {/* PROJECTS */}
-                <Projects/>
+                    {/* PROJECTS */}
+                    <Projects/>
 
-                {/* CONTACT */}
-                <Contact/>
+                    {/* EXPERIENCE */}
+                    <Experience/>
+
+                    {/* CONTACT */}
+                    <Contact/>
+
+                    {/* RETURN */}
+                    <Return/>
+                </div>
             </div>
         </div>
     );

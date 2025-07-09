@@ -17,20 +17,25 @@
 .activeSlide {
     transform: scale(1);
     opacity: 1;
-    z-index: 9;
+    z-index: 11;
     filter: blur(0);
 }
 
+.activeSlide:hover {
+    transform: scale(1.08);
+    transition: transform 0.3s ease;
+}
+
 .leftRotate {
-    transform: rotate3d(0, 1, 0, 45deg);
+    transform: rotate3d(0.1, 1, 0, 45deg);
     opacity: 50%;
-    filter: blur(4px);
+    filter: blur(3px);
 }
 
 .rightRotate {
-    transform: rotate3d(0, 1, 0, -45deg);
+    transform: rotate3d(-0.1, 1, 0, -45deg);
     opacity: 50%;
-    filter: blur(4px);
+    filter: blur(3px);
 }
 
 .transitionDetails {
@@ -45,15 +50,24 @@
 
 .leftDetails {
     opacity: 0;
-    filter: blur(4px);
+    filter: blur(3px);
 }
 
 .rightDetails {
     opacity: 0;
-    filter: blur(4px);
+    filter: blur(3px);
 }
+
+.slick-slide {
+    overflow: visible !important;
+}
+
+.slick-list {
+    overflow: visible !important;
+}
+
 .slick-dots {
-    bottom: -30px;
+    bottom: -60px;
 }
 
 .slick-dots li button:before {

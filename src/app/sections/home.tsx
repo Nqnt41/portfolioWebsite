@@ -3,7 +3,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { loadPolygonMaskPlugin } from "@tsparticles/plugin-polygon-mask";
 
-export default function Background({setInit, el}) {
+export default function Home({setInit, el}) {
     useEffect(() => {
         initParticlesEngine(async (engine) => {
             await loadSlim(engine);
@@ -14,9 +14,16 @@ export default function Background({setInit, el}) {
         });
     }, []);
 
-    const particlesLoaded = (container) => {
+    const particlesLoaded = (container) => {};
 
-    };
+    const pdfDownload = () => {
+        const link = document.createElement("a");
+        link.href = "Ryan_Coveny_Resume.pdf";
+        link.download = "Ryan_Coveny_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 
     const options = useMemo(() => ({
         "autoPlay": true,
@@ -540,6 +547,9 @@ export default function Background({setInit, el}) {
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center text-white text-4xl whitespace-pre">
                 <span ref={el} />
+                <br/>
+                <button className="text-2xl mt-3 mb-8 border-black border-solid border-1 bg-white hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md text-black font-bold" onClick={() => pdfDownload()}>Download Resume</button>
+                <button className="text-2xl ml-2 mt-1 mb-8 border-black border-solid border-1 bg-white hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md text-black font-bold" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact Me</button>
             </div>
         </div>
     )

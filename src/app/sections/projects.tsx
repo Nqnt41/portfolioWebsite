@@ -5,31 +5,13 @@ import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
 import './projects.css';
 import {
-    AnacondaOriginal,
-    ApachesparkOriginal,
-    AzuresqldatabasePlain,
-    BlenderOriginal, ClionOriginal, COriginal, CplusplusOriginal,
-    CsharpOriginal,
-    Css3Original,
-    ElectronOriginal,
-    FigmaOriginal,
-    FirebaseOriginal,
-    GithubOriginal,
-    Html5Original, IntellijOriginal,
-    JavaOriginal,
-    JavascriptOriginal,
-    JsonOriginal,
-    JupyterOriginal,
-    KerasOriginal, MatplotlibOriginal,
-    MysqlOriginal,
-    NextjsOriginal,
-    PandasOriginal, PythonOriginal, ReactnativeOriginal,
-    ReactOriginal,
-    TailwindcssOriginal, TensorflowOriginal,
-    TypescriptOriginal,
-    UnityOriginal,
-    VisualstudioOriginal
+    AnacondaOriginal, ApachesparkOriginal, AzuresqldatabasePlain, BlenderOriginal, ClionOriginal, COriginal,
+    CplusplusOriginal, CsharpOriginal, Css3Original, ElectronOriginal, FigmaOriginal, FirebaseOriginal, GithubOriginal,
+    Html5Original, IntellijOriginal, JavaOriginal, JavascriptOriginal, JsonOriginal, JupyterOriginal, KerasOriginal,
+    MatplotlibOriginal, MysqlOriginal, NextjsOriginal, PandasOriginal, PythonOriginal, ReactnativeOriginal,
+    ReactOriginal, TailwindcssOriginal, TensorflowOriginal, TypescriptOriginal, UnityOriginal, VisualstudioOriginal
 } from "devicons-react";
+import {IoArrowBackCircleOutline, IoArrowForwardCircleOutline} from "react-icons/io5";
 
 interface Logo {
     name: string;
@@ -187,22 +169,22 @@ export default function Projects() {
     const NextArrow = ({onClick}) => {
         return (
             <div className="arrow next" onClick={onClick}>
-                <FaArrowRight/>
+                <IoArrowForwardCircleOutline color="white" className="w-10 h-10 hover"/>
             </div>
         )
     }
 
     const PrevArrow = ({onClick}) => {
         return (
-            <div className="arrow prev" onClick={onClick}>
-                <FaArrowLeft/>
+            <div className="arrow prev hover" onClick={onClick}>
+                <IoArrowBackCircleOutline color="white" className="w-10 h-10 hover"/>
             </div>
         )
     }
 
     const [imageIndex, setImageIndex] = useState(0);
 
-    // Workaround for weird carousel issue. Sometimes is needed, sometimes is not, keep just in case.
+    // Workaround for weird carousel issue. Sometimes is needed, sometimes is not, keeping just in case.
     const chooseIndex = (next) => {
         if (next + 1 === projectData.length) {
             return 0;
@@ -226,10 +208,10 @@ export default function Projects() {
     //https://react-slick.neostack.com/docs/example/center-mode
 
     return (
-        <div id="projects" className="justify-center bg-gray-800 w-[100vw] pb-15">
-            <h1 className="fadeHidden text-6xl pb-6 text-center">Projects</h1>
+        <div id="projects" className="justify-center w-[100vw] pb-20 overflow-visible">
+            <h1 className="fadeHidden text-6xl mb-0 text-center z-0 overflow-visible">Projects</h1>
 
-            <div className='fadeHidden w-[85%] m-auto h-auto'>
+            <div className='fadeHidden w-[95%] mt-9 m-auto h-auto z-10 overflow-visible'>
                 <Slider {...settings}>
                     {projectData.map((project, index) => (
                         <div key={index} className={index === imageIndex ? "slide activeSlide" : index < imageIndex || (imageIndex == 0 && index == projectData.length - 1) ? "slide leftRotate" : "slide rightRotate"}>
@@ -238,15 +220,16 @@ export default function Projects() {
                                 key={index}
                                 src={project.image}
                                 alt={`image-${index}`}
+                                title={project.link}
                                 width={2560}
                                 height={1440}
                                 onClick={() => window.open(project.link, "_blank")}
                             />
                             <div className={`p-2 bg-gray-700 w-[100%] transitionDetails ${index === imageIndex ? "activeDetails" : index < imageIndex || (imageIndex === 0 && index === projectData.length - 1) ? "leftDetails" : "rightDetails"}`}>
-                                <h2 className="text-xl font-bold underline cursor-pointer hover:text-blue-400" onClick={() => window.open(project.link, "_blank")}>
+                                <h2 className="text-2xl font-bold underline cursor-pointer hover:text-blue-400 pb-2" onClick={() => window.open(project.link, "_blank")} title={project.link}>
                                     {project.name}
                                 </h2>
-                                <div>{project.description}</div>
+                                <div className="text-lg">{project.description}</div>
                                 <div className="flex justify-end space-x-1 mt-2 flex-wrap">
                                     {project.tech.map((tech, index2) => {
                                         const Icon = tech.call;

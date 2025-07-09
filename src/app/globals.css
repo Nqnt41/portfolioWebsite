@@ -21,6 +21,27 @@
   }
 }
 
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -29,6 +50,18 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+button {
+  transition: background-color 0.3s ease;
+}
+
+.fadeIn {
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s;
+  animation: fadein 2s;
 }
 
 .fadeHidden {
@@ -77,6 +110,11 @@ html {
   }
 }
 
+.background {
+  z-index: -2;
+  background: #273042;
+}
+
 .show {
   opacity: 1;
   filter: blur(0);
@@ -85,4 +123,22 @@ html {
 
 .text-fluid {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.hover {
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+.hover:hover {
+  transform: scale(1.1);
+}
+
+.hoverLite {
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+.hoverLite:hover {
+  transform: scale(1.05);
 }
