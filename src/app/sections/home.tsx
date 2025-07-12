@@ -2,8 +2,9 @@ import {useEffect, useMemo} from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { loadPolygonMaskPlugin } from "@tsparticles/plugin-polygon-mask";
+import Typed from "typed.js";
 
-export default function Home({setInit, el}) {
+export default function Home({init, setInit, el}) {
     useEffect(() => {
         initParticlesEngine(async (engine) => {
             await loadSlim(engine);
@@ -537,6 +538,21 @@ export default function Home({setInit, el}) {
             }
         }
     }), []);
+
+    useEffect(() => {
+        if (!init || !el.current) { return }
+
+        const typed = new Typed(el.current, {
+            strings: ["Hello, my name is Ryan Coveny!\nI am an Entry-Level Software Engineer."],
+            typeSpeed: 15,
+            smartBackspace: true,
+            backDelay: 5,
+        });
+
+        return () => {
+            typed.destroy();
+        };
+    }, [init]);
 
     return (
         <div id="home" className="fadeHidden relative w-[100vw] h-[100vh] z-0 m-0">

@@ -12,7 +12,7 @@ import {
     AftereffectsOriginal, BlenderOriginal, SlackOriginal, PremiereproOriginal, JupyterOriginal, LinkedinOriginal
 } from 'devicons-react';
 
-export default function About( {init, el, section, setSection} ) {
+export default function About( {init, el, section, setSection, prevSection, setPrevSection} ) {
     interface Logo {
         name: string;
         call: any;
@@ -90,62 +90,63 @@ export default function About( {init, el, section, setSection} ) {
         ]
     ]
 
-    const settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        centerMode: true,
-        centerPadding: 0,
-        swipe: false,
-        dots: true,
-        nextArrow: <IoArrowForwardCircleOutline color="white" className="w-10 h-10"/>,
-        prevArrow: <IoArrowBackCircleOutline color="white" className="w-10 h-10"/>,
-        beforeChange: (old, next) => setImageIndex(() => next),
-    }
+    const [direction, setDirection] = useState('right');
 
-    const currentRows = section === 0 ? languages : section === 1 ? frameworks : section === 2 ? technologies : [];
+    const updateSection = (next, useButtons) => {
+        setPrevSection(section);
 
-    useEffect(() => {
-        if (!init || !el.current) { return }
+        if (useButtons) {
+            setDirection(next > prevSection ? 'right' : 'left');
+        }
+        else {
+            setDirection((next - section + 3) % 3 === 1 ? 'right' : 'left');
+        }
 
-        const typed = new Typed(el.current, {
-            strings: ["Hello, my name is Ryan Coveny!\nI am an Entry-Level Software Engineer."],
-            typeSpeed: 15,
-            smartBackspace: true,
-            backDelay: 5,
-        });
-
-        return () => {
-            typed.destroy();
-        };
-    }, [init]);
-
-    const pdfDownload = () => {
-        const link = document.createElement("a");
-        link.href = "Ryan_Coveny_Resume.pdf";
-        link.download = "Ryan_Coveny_Resume.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
+        setTimeout(() => {
+            setSection(next);
+        }, 10)
+    };
 
     const useArrow = (left) => {
         if (left) {
             if (section === 0) {
-                setSection(() => 2);
+                updateSection(2, false);
             }
             else {
-                setSection(() => section - 1);
+                updateSection(section - 1, false);
             }
         }
         else {
             if (section === 2) {
-                setSection(() => 0);
+                updateSection(0, false);
             }
             else {
-                setSection(() => section + 1);
+                updateSection(section + 1, false);
             }
         }
+    }
+
+    const ShowIcons = ({row, value}) => {
+        return (
+            <div
+                className={`
+                    ${section === value ? 'flex' : 'hidden'} 
+                    ${prevSection === -1 ? '' : direction === 'left' ? 'fadeHiddenLeft' : 'fadeHiddenRight'} 
+                    grid ${row.length === 3 ? 'grid-cols-3' : row.length === 4 ? 'grid-cols-4' : 'grid-cols-5'}
+                `}
+            >
+                {row.map((unit, index) => {
+                    const Icon = unit.call;
+
+                    return (
+                        <div key={index} className="flex flex-col items-center mx-3 font-bold" title={unit.name}>
+                            <Icon size={125}/>
+                            <span className="text-white">{unit.name.toUpperCase()}</span>
+                        </div>
+                    )
+                })}
+            </div>
+        );
     }
 
     return (
@@ -171,33 +172,40 @@ export default function About( {init, el, section, setSection} ) {
 
                 <div className="fadeHidden inline-block bg-gray-700 rounded-xl w-auto overflow-hidden p-3">
                     <h1 className="text-5xl my-4 text-center font-bold">{section === 0 ? "Languages" : section === 1 ? "Frameworks" : "Technologies"}</h1>
-                    <div className="flex flex-col justify-center h-full">
-                        {currentRows.map((row, rowIndex) => (
-                            <div
-                                key={rowIndex}
-                                className={`grid ${row.length === 3 ? 'grid-cols-3' : row.length === 4 ? 'grid-cols-4' : 'grid-cols-5'} fadeHiddenX`}
-                            >
-                                {row.map((unit, index) => {
-                                    const Icon = unit.call;
-
-                                    return (
-                                        <div key={index} className="flex flex-col items-center mx-3 font-bold" title={unit.name}>
-                                            <Icon size={125}/>
-                                            <span className="text-white">{unit.name.toUpperCase()}</span>
-                                        </div>
-                                    )
-                                })}
-                            </div>
+                    <div className="flex flex-col justify-center h-full fadeHidden">
+                        {languages.map((row, index) => (
+                            <ShowIcons key={index} row={row} value={0} />
+                        ))}
+                        {frameworks.map((row, index) => (
+                            <ShowIcons key={index} row={row} value={1} />
+                        ))}
+                        {technologies.map((row, index) => (
+                            <ShowIcons key={index} row={row} value={2} />
                         ))}
                     </div>
 
-                    <button className="absolute top-1/2 left-0 w-10 h-10 mx-3 cursor-pointer" onClick={() => useArrow(true)}><IoArrowBackCircleOutline color="white" className="w-10 h-10"/></button>
-                    <button className="absolute top-1/2 right-0 w-10 h-10 mx-3 cursor-pointer" onClick={() => useArrow(false)}> <IoArrowForwardCircleOutline color="white" className="w-10 h-10"/> </button>
+                    <button className="absolute top-1/2 left-0 w-10 h-10 mx-3 cursor-pointer hover" onClick={() => useArrow(true)}><IoArrowBackCircleOutline color="white" className="w-10 h-10"/></button>
+                    <button className="absolute top-1/2 right-0 w-10 h-10 mx-3 cursor-pointer hover" onClick={() => useArrow(false)}> <IoArrowForwardCircleOutline color="white" className="w-10 h-10"/> </button>
 
                     <div className="flex justify-center border-black text-black font-bold mt-4">
-                        <button className={`${section === 0 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md`} onClick={() => setSection(0) }>Languages</button>
-                        <button className={`${section === 1 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md`} onClick={() => setSection(1) }>Frameworks</button>
-                        <button className={`${section === 2 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md`} onClick={() => setSection(2) }>Technologies</button>
+                        <button
+                            className={`${section === 0 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md`}
+                            onClick={() => updateSection(0, true)}
+                        >
+                            Languages
+                        </button>
+                        <button
+                            className={`${section === 1 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md`}
+                            onClick={() => updateSection(1, true)}
+                        >
+                            Frameworks
+                        </button>
+                        <button
+                            className={`${section === 2 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md`}
+                            onClick={() => updateSection(2, true)}
+                        >
+                            Technologies
+                        </button>
                     </div>
                 </div>
             </div>

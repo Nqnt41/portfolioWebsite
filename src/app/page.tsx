@@ -18,6 +18,7 @@ export default function Page() {
     const el = useRef(null);
     const [init, setInit] = useState(false);
     const [section, setSection] = useState(0);
+    const [prevSection, setPrevSection] = useState(-1);
 
     let docActive = false;
 
@@ -62,7 +63,7 @@ export default function Page() {
                 });
             });
 
-            const hiddenElements = document.querySelectorAll('.fadeHidden, .fadeHiddenX');
+            const hiddenElements = document.querySelectorAll('.fadeHidden, .fadeHiddenLeft, .fadeHiddenRight, .fadeHiddenX');
             hiddenElements.forEach((el) => observer.observe(el));
 
             return () => observer.disconnect();
@@ -84,11 +85,11 @@ export default function Page() {
 
             <div className="fadeIn">
                 {/* HOME */}
-                <Home setInit={setInit} el={el}/>
+                <Home init={init} setInit={setInit} el={el}/>
 
                 <div className="background">
                     {/* ABOUT */}
-                    <About init={init} el={el} section={section} setSection={setSection} />
+                    <About init={init} el={el} section={section} setSection={setSection} prevSection={prevSection} setPrevSection={setPrevSection} />
 
                     {/* PROJECTS */}
                     <Projects/>
