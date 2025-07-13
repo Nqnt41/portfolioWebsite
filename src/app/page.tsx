@@ -4,13 +4,12 @@ import "tailwindcss";
 import "./globals.css"
 import "./navigation.css"
 
-import Home from "./sections/home.tsx";
-import Background from "./background.tsx";
-import About from "./sections/about.tsx";
-import Projects from "./sections/projects.tsx";
-import Contact from "./sections/contact.tsx";
-import Experience from "./sections/experience.tsx";
-import Return from "./sections/return.tsx";
+import Home from "./sections/home";
+import About from "./sections/about";
+import Projects from "./sections/projects";
+import Contact from "./sections/contact";
+import Experience from "./sections/experience";
+import Return from "./sections/return";
 
 import {useEffect, useRef, useState} from "react";
 
@@ -89,7 +88,7 @@ export default function Page() {
 
                 <div className="background">
                     {/* ABOUT */}
-                    <About init={init} el={el} section={section} setSection={setSection} prevSection={prevSection} setPrevSection={setPrevSection} />
+                    <About section={section} setSection={setSection} prevSection={prevSection} setPrevSection={setPrevSection} />
 
                     {/* PROJECTS */}
                     <Projects/>

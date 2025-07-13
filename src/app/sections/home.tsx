@@ -1,10 +1,16 @@
-import {useEffect, useMemo} from "react";
+import React, {useEffect, useMemo} from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { loadPolygonMaskPlugin } from "@tsparticles/plugin-polygon-mask";
 import Typed from "typed.js";
 
-export default function Home({init, setInit, el}) {
+interface HomeProps {
+    init: boolean;
+    setInit: React.Dispatch<React.SetStateAction<boolean>>;
+    el: any;
+}
+
+export default function Home({init, setInit, el} : HomeProps) {
     useEffect(() => {
         initParticlesEngine(async (engine) => {
             await loadSlim(engine);
@@ -15,8 +21,6 @@ export default function Home({init, setInit, el}) {
         });
     }, []);
 
-    const particlesLoaded = (container) => {};
-
     const pdfDownload = () => {
         const link = document.createElement("a");
         link.href = "Ryan_Coveny_Resume.pdf";
@@ -26,7 +30,7 @@ export default function Home({init, setInit, el}) {
         document.body.removeChild(link);
     }
 
-    const options = useMemo(() => ({
+    const options : any = useMemo(() => ({
         "autoPlay": true,
         "background": {
         "color": {
@@ -558,7 +562,6 @@ export default function Home({init, setInit, el}) {
         <div id="home" className="fadeHidden relative w-[100vw] h-[100vh] z-0 m-0">
             <Particles
                 id='tsparticles'
-                particlesLoaded={particlesLoaded}
                 options={options}
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center text-white text-4xl whitespace-pre">

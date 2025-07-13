@@ -30,7 +30,7 @@ const projectData: Project[] = [
     {
         name: "Joey and Kimmy's Sticker Label Printer",
         link: "https://github.com/Nqnt41/casual-pkmn-team-builder",
-        image: "/images/carousel/stickerPrinter.JPG",
+        image: "/portfolioWebsite/images/carousel/stickerPrinter.JPG",
         description: "Developed a full-stack Electron.js app used by local restaurant staff to print and organize takeout label data. Built a responsive React.js front-end backed by a Java server managing object data using both JSON and SQL. Used Apache Spark as a custom API layer for smooth communication between the front-end and back-end.",
         tech: [
             { name: "React.js", call: ReactOriginal },
@@ -50,7 +50,7 @@ const projectData: Project[] = [
     {
         name: "PokéAPI Team Builder",
         link: "https://github.com/Nqnt41/Sticker-Label-Printer",
-        image: "/images/carousel/teamBuilder.JPG",
+        image: "/portfolioWebsite/images/carousel/teamBuilder.JPG",
         description: "A custom team builder for the Pokémon series of video games using data from an open source Web API. Designed to help users design and visualize their ideal teams.",
         tech: [
             { name: "React.js", call: ReactOriginal },
@@ -65,7 +65,7 @@ const projectData: Project[] = [
     {
         name: "Portfolio Website",
         link: "https://github.com/Nqnt41/portfolioWebsite",
-        image: "/images/carousel/portfolioWebsite.JPG",
+        image: "/portfolioWebsite/images/carousel/portfolioWebsite.JPG",
         description: "This very website, built using Typescript, Next.js, and Tailwind.",
         tech: [
             { name: "Next.js", call: NextjsOriginal },
@@ -81,7 +81,7 @@ const projectData: Project[] = [
     {
         name: "CaSMM Research Project",
         link: "https://github.com/UFGroup4b/Sapphire-Project03-4b",
-        image: "/images/carousel/casmm.JPG",
+        image: "/portfolioWebsite/images/carousel/casmm.JPG",
         description: "Worked as part of a six member Agile-Scrum team to develop React.js resources for the CaSMM development project at https://github.com/STEM-C/CaSMM. Planned and built the front-end React.js interface and styling for the student and teacher assignment views.",
         tech: [
             { name: "React.js", call: ReactOriginal },
@@ -95,7 +95,7 @@ const projectData: Project[] = [
     {
         name: "Hive Mind",
         link: "https://github.com/zingenzombie/HiveMind",
-        image: "/images/carousel/hiveMind.JPG",
+        image: "/portfolioWebsite/images/carousel/hiveMind.JPG",
         description: "A custom Unity game consisting of a single shared world made up of moduler user-defined tiles, with users being able to walk between server tiles at will. Developed project's user interface.",
         tech: [
             { name: "C#", call: CsharpOriginal },
@@ -110,7 +110,7 @@ const projectData: Project[] = [
     {
         name: "Loan Approval Prediction Application",
         link: "https://github.com/Nqnt41/loan-approval-prediction-app",
-        image: "/images/carousel/loanApproval.JPG",
+        image: "/portfolioWebsite/images/carousel/loanApproval.JPG",
         description: "Led a team of five in creating a Python machine learning application used to predict loan approval odds. Combines several machine learning algorithms, including Neural Networks, Logistic Regression, KNN, SVM, Decision Trees, and Ensemble Learning Methods.",
         tech: [
             { name: "Python", call: PythonOriginal },
@@ -126,7 +126,7 @@ const projectData: Project[] = [
     {
         name: "Music Sorter and Organizer",
         link: "https://github.com/Nqnt41/Music-Sorter-and-Organizer",
-        image: "/images/carousel/musicSorter.JPG",
+        image: "/portfolioWebsite/images/carousel/musicSorter.JPG",
         description: "Worked in a pair to develop a music organization program utilizing the large-scale open-source Million Song Dataset. Manipulates, stores, accesses, searches, and efficiently displays data using the Splay Tree data structure.",
         tech: [
             { name: "C++", call: CplusplusOriginal },
@@ -138,7 +138,7 @@ const projectData: Project[] = [
     {
         name: "Society of Software Developers Website",
         link: "https://github.com/ufssd/ufssd-website",
-        image: "/images/carousel/ufssd.JPG",
+        image: "/portfolioWebsite/images/carousel/ufssd.JPG",
         description: "Collaborated in a seven-member Agile-Scrum team to develop the organization’s website at ufssd.org. Designed and constructed website home page and continuously managed project dependencies.",
         tech: [
             { name: "React.js", call: ReactOriginal },
@@ -152,7 +152,7 @@ const projectData: Project[] = [
     {
         name: "UF Open Source Club'\s Echologator",
         link: "https://github.com/ufosc/Echo-Chat",
-        image: "/images/carousel/echologator.JPG",
+        image: "/portfolioWebsite/images/carousel/echologator.JPG",
         description: "Joined the development of a Firestore back-end open source proximity-based chat application, Echologator. Aided the development of the application’s front-end chat communication and user profile display.",
         tech: [
             { name: "React Native", call: ReactnativeOriginal },
@@ -162,11 +162,10 @@ const projectData: Project[] = [
             { name: "GitHub", call: GithubOriginal },
         ]
     },
-    // TODO: Etc lmao. million song dataset, ufssd, echologator, etc.
 ];
 
 export default function Projects() {
-    const NextArrow = ({onClick}) => {
+    const NextArrow = ({ onClick }: { onClick?: () => void }) => {
         return (
             <div className="arrow next" onClick={onClick}>
                 <IoArrowForwardCircleOutline color="white" className="w-10 h-10 hover"/>
@@ -174,7 +173,7 @@ export default function Projects() {
         )
     }
 
-    const PrevArrow = ({onClick}) => {
+    const PrevArrow = ({ onClick }: { onClick?: () => void }) => {
         return (
             <div className="arrow prev hover" onClick={onClick}>
                 <IoArrowBackCircleOutline color="white" className="w-10 h-10 hover"/>
@@ -185,7 +184,7 @@ export default function Projects() {
     const [imageIndex, setImageIndex] = useState(0);
 
     // Workaround for weird carousel issue. Sometimes is needed, sometimes is not, keeping just in case.
-    const chooseIndex = (next) => {
+    const chooseIndex = (next : number) => {
         if (next + 1 === projectData.length) {
             return 0;
         }
@@ -197,12 +196,12 @@ export default function Projects() {
         speed: 500,
         slidesToShow: 3,
         centerMode: true,
-        centerPadding: 0,
+        centerPadding: "0",
         swipe: false,
         dots: true,
-        nextArrow: <NextArrow/>,
-        prevArrow: <PrevArrow/>,
-        beforeChange: (old, next) => setImageIndex(() => next),
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+        beforeChange: (old : number, next : number) => setImageIndex(() => next),
     }
 
     //https://react-slick.neostack.com/docs/example/center-mode

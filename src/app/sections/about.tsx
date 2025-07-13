@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import Typed from "typed.js";
 import {IoArrowBackCircleOutline, IoArrowForwardCircleOutline} from "react-icons/io5";
 
 import {
@@ -12,7 +11,14 @@ import {
     AftereffectsOriginal, BlenderOriginal, SlackOriginal, PremiereproOriginal, JupyterOriginal, LinkedinOriginal
 } from 'devicons-react';
 
-export default function About( {init, el, section, setSection, prevSection, setPrevSection} ) {
+interface AboutProps {
+    section: number;
+    setSection: React.Dispatch<React.SetStateAction<number>>;
+    prevSection: number;
+    setPrevSection: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function About( {section, setSection, prevSection, setPrevSection} : AboutProps ) {
     interface Logo {
         name: string;
         call: any;
@@ -92,7 +98,7 @@ export default function About( {init, el, section, setSection, prevSection, setP
 
     const [direction, setDirection] = useState('right');
 
-    const updateSection = (next, useButtons) => {
+    const updateSection = (next : number, useButtons : boolean) => {
         setPrevSection(section);
 
         if (useButtons) {
@@ -107,7 +113,7 @@ export default function About( {init, el, section, setSection, prevSection, setP
         }, 10)
     };
 
-    const useArrow = (left) => {
+    const useArrow = (left : boolean) => {
         if (left) {
             if (section === 0) {
                 updateSection(2, false);
@@ -126,7 +132,7 @@ export default function About( {init, el, section, setSection, prevSection, setP
         }
     }
 
-    const ShowIcons = ({row, value}) => {
+    const ShowIcons = ({row, value} : { row: Logo[]; value: number }) => {
         return (
             <div
                 className={`
@@ -158,7 +164,7 @@ export default function About( {init, el, section, setSection, prevSection, setP
                     <h1 className="text-5xl my-4 text-center font-bold">About Me</h1>
 
                     <img
-                        src="/images/profileTransparent.png"
+                        src="/portfolioWebsite/images/profileTransparent.png"
                         alt="Profile Image"
                         className="m-auto mt-[2%] mb-[2%] rounded-4xl w-[60%]"
                     />

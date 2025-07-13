@@ -5,14 +5,16 @@ import {useEffect} from "react";
 
 export default function Return() {
     useEffect(() => {
-        const scrollButton = document.getElementById("scrollToTop");
+        const scrollButton : any = document.getElementById("scrollToTop");
 
-        scrollButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (scrollButton) {
+            scrollButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
     }, [])
 
     return (

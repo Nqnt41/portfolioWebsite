@@ -1,9 +1,8 @@
 import './contact.css';
-import {useState} from "react";
 
 export default function Contact() {
     // Using template from docs.web3forms.com
-    async function handleSubmit(e) {
+    async function handleSubmit(e : any) {
         e.preventDefault();
         const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",

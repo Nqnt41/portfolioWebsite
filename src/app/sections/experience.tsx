@@ -17,7 +17,7 @@ const experienceData : Experience[] = [
         workplace: "Joey and Kimmy's Seafood Market and Restaurant",
         category: "employment",
         position: "Software Engineer, Customer Service Staff",
-        logo: "/images/experiences/jk.PNG",
+        logo: "/portfolioWebsite/images/experiences/jk.PNG",
         years: "May 2023 - Ongoing",
         location: "Vero Beach, FL",
         description: [
@@ -32,7 +32,7 @@ const experienceData : Experience[] = [
         workplace: "University of Florida",
         category: "education",
         position: "Bachelor of Science in Computer Science - 3.70 GPA",
-        logo: "/images/experiences/uf.PNG",
+        logo: "/portfolioWebsite/images/experiences/uf.PNG",
         years: "June 2021 - May 2025",
         location: "Vero Beach, FL",
         description: [
@@ -50,7 +50,7 @@ const experienceData : Experience[] = [
         workplace: "Environmental Learning Center",
         category: "employment",
         position: "Assistant Aquarium Technician",
-        logo: "/images/experiences/elc.PNG",
+        logo: "/portfolioWebsite/images/experiences/elc.PNG",
         years: "Dec. 2020 - May 2021",
         location: "Vero Beach, FL",
         description: [
@@ -67,7 +67,7 @@ const experienceData : Experience[] = [
         workplace: "Citrus Elementary School",
         category: "volunteer",
         position: "Reading Mentors Tutor",
-        logo: "/images/experiences/readingMentors.PNG",
+        logo: "/portfolioWebsite/images/experiences/readingMentors.PNG",
         years: "June 2019 - March 2020",
         location: "Vero Beach, FL",
         description: [
@@ -86,7 +86,7 @@ export default function Experience() {
 
             <div className="flex flex-col items-center justify-center w-[100vw] h-auto">
                 {experienceData.map((experience, index) => (
-                    <div key={index} className="flex w-[90%] mb-5 fadeHiddenX items-start hoverLite">
+                    <div key={index} className="flex w-[90%] mb-5 fadeHiddenRight items-start hoverLite">
                         <div className="flex flex-col w-[9%]">
                             <div className="relative aspect-square w-full">
                                 <Image
