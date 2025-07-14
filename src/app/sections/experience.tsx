@@ -67,7 +67,7 @@ const experienceData : Experience[] = [
         workplace: "Citrus Elementary School",
         category: "volunteer",
         position: "Reading Mentors Tutor",
-        logo: "/portfolioWebsite/images/experiences/readingMentors.PNG",
+        logo: "/portfolioWebsite/images/experiences/citrus.PNG",
         years: "June 2019 - March 2020",
         location: "Vero Beach, FL",
         description: [
@@ -84,10 +84,10 @@ export default function Experience() {
         <div id="experience" className="justify-center w-[100vw]">
             <h1 className="fadeHidden text-6xl pb-6 text-center">Experience</h1>
 
-            <div className="flex flex-col items-center justify-center w-[100vw] h-auto">
+            <div className="flex flex-col items-center justify-center w-[100vw] h-auto ">
                 {experienceData.map((experience, index) => (
-                    <div key={index} className="flex w-[90%] mb-5 fadeHiddenRight items-start hoverLite">
-                        <div className="flex flex-col w-[9%]">
+                    <div key={index} className="flex w-[90%] mb-5 items-start hoverLite ">
+                        <div className="flex flex-col w-[9%] fadeHiddenX">
                             <div className="relative aspect-square w-full">
                                 <Image
                                     src={experience.logo}
@@ -101,7 +101,7 @@ export default function Experience() {
                                 {experience.years}
                             </div>
                         </div>
-                        <div className="bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] py-3 px-4 ml-6">
+                        <div className="bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] py-3 px-4 ml-6 fadeHiddenX">
                             <h2 className="text-2xl"><b>{experience.workplace}</b> | <i>{experience.position}</i></h2>
                             <ul className="list-disc text-lg pl-5 pt-3">
                                 {experience.description.map((bullet, index) => (

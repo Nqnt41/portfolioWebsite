@@ -9,6 +9,7 @@
     "lint": "next lint",
     "export": "next export",
     "deploy": "next build && next export && gh-pages -d out",
+    "preview": "cross-env NODE_ENV=production next build && npx serve out --single --base /portfolioWebsite",
     "check:ts": "tsc --noEmit"
   },
   "dependencies": {
