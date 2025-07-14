@@ -17,7 +17,7 @@ const experienceData : Experience[] = [
         workplace: "Joey and Kimmy's Seafood Market and Restaurant",
         category: "employment",
         position: "Software Engineer, Customer Service Staff",
-        logo: "/portfolioWebsite/images/experiences/jk.PNG",
+        logo: "/images/experiences/jk.PNG",
         years: "May 2023 - Ongoing",
         location: "Vero Beach, FL",
         description: [
@@ -32,7 +32,7 @@ const experienceData : Experience[] = [
         workplace: "University of Florida",
         category: "education",
         position: "Bachelor of Science in Computer Science - 3.70 GPA",
-        logo: "/portfolioWebsite/images/experiences/uf.PNG",
+        logo: "/images/experiences/uf.PNG",
         years: "June 2021 - May 2025",
         location: "Vero Beach, FL",
         description: [
@@ -50,7 +50,7 @@ const experienceData : Experience[] = [
         workplace: "Environmental Learning Center",
         category: "employment",
         position: "Assistant Aquarium Technician",
-        logo: "/portfolioWebsite/images/experiences/elc.PNG",
+        logo: "/images/experiences/elc.PNG",
         years: "Dec. 2020 - May 2021",
         location: "Vero Beach, FL",
         description: [
@@ -67,7 +67,7 @@ const experienceData : Experience[] = [
         workplace: "Citrus Elementary School",
         category: "volunteer",
         position: "Reading Mentors Tutor",
-        logo: "/portfolioWebsite/images/experiences/citrus.PNG",
+        logo: "/images/experiences/citrus.PNG",
         years: "June 2019 - March 2020",
         location: "Vero Beach, FL",
         description: [

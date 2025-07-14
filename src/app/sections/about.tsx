@@ -164,7 +164,7 @@ export default function About( {section, setSection, prevSection, setPrevSection
                     <h1 className="text-5xl my-4 text-center font-bold">About Me</h1>
 
                     <img
-                        src="/portfolioWebsite/images/profileTransparent.png"
+                        src="/images/profileTransparent.png"
                         alt="Profile Image"
                         className="m-auto mt-[2%] mb-[2%] rounded-4xl w-[60%]"
                     />
