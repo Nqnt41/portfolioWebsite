@@ -62,7 +62,7 @@ export default function Page() {
                 });
             });
 
-            const hiddenElements = document.querySelectorAll('.fadeHidden, .fadeHiddenLeft, .fadeHiddenRight, .fadeHiddenX');
+            const hiddenElements = document.querySelectorAll('.fadeHidden, .fadeHiddenLeft, .fadeHiddenRight, .fadeHiddenX, .fadeHiddenLeftNoDelay');
             hiddenElements.forEach((el) => observer.observe(el));
 
             return () => observer.disconnect();
@@ -70,7 +70,7 @@ export default function Page() {
     }, [docActive, section]);
 
     return (
-        <div className="relative w-full min-h-screen overflow-hidden">
+        <div className="relative w-full min-h-screen overflow-hidden font">
             {/* NAVIGATION BAR */}
             <header className="boxDetails fixed top-0 left-0 w-full h-16 flex items-center justify-end text-white text-xl z-15">
                 <nav className="flex gap-4 px-4">

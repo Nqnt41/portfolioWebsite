@@ -18,7 +18,7 @@ export default function Return() {
     }, [])
 
     return (
-        <div id="contact" className="relative flex flex-col bg-black w-[100%] mt-15 fadeHidden">
+        <div id="contact" className="relative flex flex-col bg-black w-[100%] mt-15 fadeHidden justify-end">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <MdKeyboardDoubleArrowUp size={64} color="black" className="bg-white rounded-lg hover:bg-gray-400 hover:cursor-pointer hover" id="scrollToTop" title="Return to Top" />
             </div>

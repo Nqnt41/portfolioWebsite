@@ -156,27 +156,51 @@ export default function About( {section, setSection, prevSection, setPrevSection
     }
 
     return (
-        <div id="about" className="justify-center w-[100vw] p-7 pb-10">
-            <h1 className="fadeHidden text-6xl mb-5 text-center">About</h1>
+        <div id="about" className="justify-center w-[100vw]">
+            <h1 className="fadeHidden text-6xl py-12 text-center font-bold">About</h1>
 
-            <div className="fadeHidden flex justify-center items-center text-lg gap-10 w-full">
-                <div className="inline-block bg-gray-700 rounded-xl w-[30%] h-[95%] whitespace-pre-wrap p-2">
+            <div className="fadeHidden flex justify-center items-center text-lg gap-10 w-full overflow-hidden">
+                <div className="inline-block bg-gray-700 rounded-xl w-[45%] h-[95%] whitespace-pre-wrap p-2">
                     <h1 className="text-5xl my-4 text-center font-bold">About Me</h1>
 
                     <img
                         src="/images/profileTransparent.png"
                         alt="Profile Image"
-                        className="m-auto mt-[2%] mb-[2%] rounded-4xl w-[60%]"
+                        className="m-auto mt-[2%] mb-[2%] rounded-4xl w-[60%] fadeHidden"
                     />
 
-                    <div className="text-justify p-3">{
+                    <div className="flex justify-left px-5 py-2 items-center fadeHiddenLeftNoDelay">
+                        <img
+                            src="/images/experiences/jk.PNG"
+                            alt="Joey and Kimmy's Logo"
+                            className="rounded-lg w-13 h-13 mr-2 align-middle"
+                        />
+                        <div className="text-xl font-normal">
+                            <b>Joey and Kimmy's Seafood Market and Restaurant</b><br/>
+                            Software Engineer, Customer Service Staff
+                        </div>
+                    </div>
+
+                    <div className="flex justify-left px-5 pt-2 items-center fadeHiddenLeftNoDelay">
+                        <img
+                            src="/images/experiences/uf.PNG"
+                            alt="UF Logo"
+                            className="rounded-lg w-13 h-13 mr-2 align-middle"
+                        />
+                        <div className="text-xl font-normal">
+                            <b>University of Florida</b> - 3.70 GPA<br/>
+                            Bachelor of Science in Computer Science
+                        </div>
+                    </div>
+
+                    <div className="text-justify p-3 text-xl fadeHidden">{
                         "\"With over four years of practical experience in web development, software engineering and coding, I am an engineer fully committed to development best practices." +
                         "\n\nGraduating cum laude in Computer Science with a 3.7 GPA, I have poured countless hours into perfecting my craft as a developer through coursework, extracurricular activities, group projects, research, personal projects, and business commissioned software solutions." +
                         "\n\nI am eager to contribute my skills in creating websites and software to a team creating unique and innovative solutions!\""
                     }</div>
                 </div>
 
-                <div className="fadeHidden inline-block bg-gray-700 rounded-xl w-auto overflow-hidden p-3">
+                <div className="fadeHidden inline-block bg-gray-700 rounded-xl w-[45%] overflow-hidden p-3">
                     <h1 className="text-5xl my-4 text-center font-bold">{section === 0 ? "Languages" : section === 1 ? "Frameworks" : "Technologies"}</h1>
                     <div className="flex flex-col justify-center h-full fadeHidden">
                         {languages.map((row, index) => (

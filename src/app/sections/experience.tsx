@@ -82,7 +82,7 @@ const experienceData : Experience[] = [
 export default function Experience() {
     return (
         <div id="experience" className="justify-center w-[100vw]">
-            <h1 className="fadeHidden text-6xl pb-6 text-center">Experience</h1>
+            <h1 className="fadeHidden text-6xl text-center font-bold py-12">Experience</h1>
 
             <div className="flex flex-col items-center justify-center w-[100vw] h-auto ">
                 {experienceData.map((experience, index) => (
@@ -101,7 +101,7 @@ export default function Experience() {
                                 {experience.years}
                             </div>
                         </div>
-                        <div className="bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] py-3 px-4 ml-6 fadeHiddenX">
+                        <div className="bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] px-4 ml-6 fadeHiddenX">
                             <h2 className="text-2xl"><b>{experience.workplace}</b> | <i>{experience.position}</i></h2>
                             <ul className="list-disc text-lg pl-5 pt-3">
                                 {experience.description.map((bullet, index) => (

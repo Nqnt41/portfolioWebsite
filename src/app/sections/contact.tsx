@@ -30,8 +30,8 @@ export default function Contact() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center w-[100vw]">
-            <h1 className="fadeHidden text-6xl pb-6 text-center">Contact</h1>
+        <div className="flex flex-col items-center w-[100vw]">
+            <h1 className="fadeHidden text-6xl py-12 text-center font-bold">Contact</h1>
 
             <form onSubmit={handleSubmit} action="" className="fadeHidden w-[60%] text-xl">
                 <h2 className="flex text-center justify-center pt-0 pb-2 px-2">Have a question, want to work together, or just want to say hello?<br/>Leave your details and I will reach out to you as soon as possible!</h2>

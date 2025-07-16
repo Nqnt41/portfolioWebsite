@@ -207,10 +207,10 @@ export default function Projects() {
     //https://react-slick.neostack.com/docs/example/center-mode
 
     return (
-        <div id="projects" className="justify-center w-[100vw] pb-20 overflow-visible">
-            <h1 className="fadeHidden text-6xl mb-0 text-center z-0 overflow-visible">Projects</h1>
+        <div id="projects" className="justify-center w-[100vw] pb-17 overflow-visible">
+            <h1 className="fadeHidden text-6xl text-center z-0 overflow-visible font-bold py-12">Projects</h1>
 
-            <div className='fadeHidden w-[95%] mt-9 m-auto h-auto z-10 overflow-visible'>
+            <div className='fadeHidden w-[95%] m-auto h-auto z-10 overflow-visible'>
                 <Slider {...settings}>
                     {projectData.map((project, index) => (
                         <div key={index} className={index === imageIndex ? "slide activeSlide" : index < imageIndex || (imageIndex == 0 && index == projectData.length - 1) ? "slide leftRotate" : "slide rightRotate"}>
@@ -224,8 +224,8 @@ export default function Projects() {
                                 height={1440}
                                 onClick={() => window.open(project.link, "_blank")}
                             />
-                            <div className={`p-2 bg-gray-700 w-[100%] transitionDetails ${index === imageIndex ? "activeDetails" : index < imageIndex || (imageIndex === 0 && index === projectData.length - 1) ? "leftDetails" : "rightDetails"}`}>
-                                <h2 className="text-2xl font-bold underline cursor-pointer hover:text-blue-400 pb-2" onClick={() => window.open(project.link, "_blank")} title={project.link}>
+                            <div className={`p-2 bg-gray-700 w-[100%] transitionDetails ${index === imageIndex ? "activeDetails hover:cursor-pointer" : index < imageIndex || (imageIndex === 0 && index === projectData.length - 1) ? "leftDetails" : "rightDetails"}`}>
+                                <h2 className="text-2xl font-bold cursor-pointer pb-2" onClick={() => window.open(project.link, "_blank")} title={project.link}>
                                     {project.name}
                                 </h2>
                                 <div className="text-lg">{project.description}</div>

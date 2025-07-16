@@ -9,7 +9,10 @@ module.exports = {
     extend: {
       colors: {
         'midnight': '#141414'
-      }
+      },
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+      },
     },
   },
   plugins: [],
