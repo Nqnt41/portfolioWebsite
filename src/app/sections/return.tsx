@@ -5,7 +5,7 @@ import {useEffect} from "react";
 
 export default function Return() {
     useEffect(() => {
-        const scrollButton : any = document.getElementById("scrollToTop");
+        const scrollButton : any = document.getElementById("scrollToTopReturn");
 
         if (scrollButton) {
             scrollButton.addEventListener('click', () => {
@@ -20,7 +20,7 @@ export default function Return() {
     return (
         <div id="contact" className="relative flex flex-col bg-black w-[100%] mt-15 fadeHidden justify-end">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <MdKeyboardDoubleArrowUp size={64} color="black" className="bg-white rounded-lg hover:bg-gray-400 hover:cursor-pointer hover" id="scrollToTop" title="Return to Top" />
+                <MdKeyboardDoubleArrowUp size={64} color="black" className="bg-white rounded-lg hover:bg-gray-400 hover:cursor-pointer hover" id="scrollToTopReturn" title="Return to Top" />
             </div>
 
             <div className="flex justify-center mb-5 pt-15">

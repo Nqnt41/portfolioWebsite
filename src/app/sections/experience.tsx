@@ -26,7 +26,7 @@ const experienceData : Experience[] = [
             "Served guests, managed the front counter, and bussed tables during busy dinner nights, improving customer service and interpersonal skills.",
             "Help to manage restaurant paperwork and perform tech-support on the company computer."
         ],
-        link: "https://github.com/Nqnt41/Sticker-Label-Printer"
+        link: "https://joeyandkimmys.com/"
     },
     {
         workplace: "University of Florida",
@@ -44,7 +44,7 @@ const experienceData : Experience[] = [
             "Developed the C# UI/UX for Hive Mind via as my senior capstone project under Professor Alexandre Gomes de Siqueira. Project creates a shared-world experience made up of modular, user-defined tiles, with each tile represents a different individual server instance with different properties.",
             "Earned a minor in Digital Arts and Sciences, which focused on graphic design in Adobe Photoshop, 3D modeling in Autodesk Maya, and 2D animation in Adobe Animate."
         ],
-        link: ""
+        link: "https://www.ufl.edu/"
     },
     {
         workplace: "Environmental Learning Center",
@@ -61,7 +61,7 @@ const experienceData : Experience[] = [
             "Trusted to work and report out independently with little supervision.",
             "Earned a letter of recommendation from the Learning Center’s previous Senior Educator, Sara Piotter.",
         ],
-        link: ""
+        link: "https://www.discoverelc.org/"
     },
     {
         workplace: "Citrus Elementary School",
@@ -75,7 +75,7 @@ const experienceData : Experience[] = [
             "Worked alongside multiple fellow tutors and pupils across several months.",
             "Developed improved communication prowess and developed an ability to mentor others in valuable skills."
         ],
-        link: ""
+        link: "https://ces.indianriverschools.org/"
     },
 ]
 
@@ -86,7 +86,12 @@ export default function Experience() {
 
             <div className="flex flex-col items-center justify-center w-[100vw] h-auto ">
                 {experienceData.map((experience, index) => (
-                    <div key={index} className="flex w-[90%] mb-5 items-start hoverLite ">
+                    <div
+                        key={index}
+                        className="flex w-[90%] mb-5 items-start hoverLite hover:cursor-pointer"
+                        title={experience.link}
+                        onClick={() => window.open(experience.link, "_blank")}
+                    >
                         <div className="flex flex-col w-[9%] fadeHiddenX">
                             <div className="relative aspect-square w-full">
                                 <Image
@@ -101,7 +106,7 @@ export default function Experience() {
                                 {experience.years}
                             </div>
                         </div>
-                        <div className="bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] px-4 ml-6 fadeHiddenX">
+                        <div className="bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] px-4 py-2 ml-6 fadeHiddenX">
                             <h2 className="text-2xl"><b>{experience.workplace}</b> | <i>{experience.position}</i></h2>
                             <ul className="list-disc text-lg pl-5 pt-3">
                                 {experience.description.map((bullet, index) => (

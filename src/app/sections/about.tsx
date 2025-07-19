@@ -146,8 +146,10 @@ export default function About( {section, setSection, prevSection, setPrevSection
 
                     return (
                         <div key={index} className="flex flex-col items-center mx-3 font-bold" title={unit.name}>
-                            <Icon size={125}/>
-                            <span className="text-white">{unit.name.toUpperCase()}</span>
+                            <div className="flex flex-col items-center hover">
+                                <Icon size={125}/>
+                                <div>{unit.name.toUpperCase()}</div>
+                            </div>
                         </div>
                     )
                 })}
@@ -169,35 +171,45 @@ export default function About( {section, setSection, prevSection, setPrevSection
                         className="m-auto mt-[2%] mb-[2%] rounded-4xl w-[60%] fadeHidden"
                     />
 
-                    <div className="flex justify-left px-5 py-2 items-center fadeHiddenLeftNoDelay">
-                        <img
-                            src="/images/experiences/jk.PNG"
-                            alt="Joey and Kimmy's Logo"
-                            className="rounded-lg w-13 h-13 mr-2 align-middle"
-                        />
-                        <div className="text-xl font-normal">
-                            <b>Joey and Kimmy's Seafood Market and Restaurant</b><br/>
-                            Software Engineer, Customer Service Staff
+                    <span className="fadeHidden">
+                        <div
+                            className="inline-flex justify-start px-5 py-2 items-center hoverLite hover:cursor-pointer"
+                            onClick={() => window.open("https://www.ufl.edu/", "_blank")}
+                            title="https://www.ufl.edu/"
+                        >
+                            <img
+                                src="/images/experiences/uf.PNG"
+                                alt="UF Logo"
+                                className="rounded-lg w-13 h-13 mr-2 align-middle"
+                            />
+                            <div className="text-xl font-normal">
+                                <b>University of Florida</b> - 3.70 GPA<br/>
+                                Bachelor of Science in Computer Science
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="flex justify-left px-5 pt-2 items-center fadeHiddenLeftNoDelay">
-                        <img
-                            src="/images/experiences/uf.PNG"
-                            alt="UF Logo"
-                            className="rounded-lg w-13 h-13 mr-2 align-middle"
-                        />
-                        <div className="text-xl font-normal">
-                            <b>University of Florida</b> - 3.70 GPA<br/>
-                            Bachelor of Science in Computer Science
+                        <div
+                            className="inline-flex justify-start px-5 py-2 items-center hoverLite hover:cursor-pointer"
+                            onClick={() => window.open("https://joeyandkimmys.com/", "_blank")}
+                            title="https://joeyandkimmys.com/"
+                        >
+                            <img
+                                src="/images/experiences/jk.PNG"
+                                alt="Joey and Kimmy's Logo"
+                                className="rounded-lg w-13 h-13 mr-2 align-middle"
+                            />
+                            <div className="text-xl font-normal">
+                                <b>Joey and Kimmy's Seafood Market and Restaurant</b><br/>
+                                Software Engineer, Customer Service Staff
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="text-justify p-3 text-xl fadeHidden">{
-                        "\"With over four years of practical experience in web development, software engineering and coding, I am an engineer fully committed to development best practices." +
-                        "\n\nGraduating cum laude in Computer Science with a 3.7 GPA, I have poured countless hours into perfecting my craft as a developer through coursework, extracurricular activities, group projects, research, personal projects, and business commissioned software solutions." +
-                        "\n\nI am eager to contribute my skills in creating websites and software to a team creating unique and innovative solutions!\""
-                    }</div>
+                        <div className="text-justify p-3 text-xl">{
+                            "\"With over four years of practical experience in web development, software engineering and coding, I am an engineer fully committed to development best practices." +
+                            "\n\nGraduating cum laude in Computer Science with a 3.7 GPA, I have poured countless hours into perfecting my craft as a developer through coursework, extracurricular activities, group projects, research, personal projects, and business commissioned software solutions." +
+                            "\n\nI am eager to contribute my skills in creating websites and software to a team creating unique and innovative solutions!\""
+                        }</div>
+                    </span>
                 </div>
 
                 <div className="fadeHidden inline-block bg-gray-700 rounded-xl w-[45%] overflow-hidden p-3">
