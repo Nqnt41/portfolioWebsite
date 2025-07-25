@@ -213,7 +213,7 @@ export default function Projects() {
             <div className='fadeHidden w-[95%] m-auto h-auto z-10 overflow-visible'>
                 <Slider {...settings}>
                     {projectData.map((project, index) => (
-                        <div key={index} className={index === imageIndex ? "slide activeSlide" : index < imageIndex || (imageIndex == 0 && index == projectData.length - 1) ? "slide leftRotate" : "slide rightRotate"}>
+                        <div key={index} className={index === imageIndex ? "slide activeSlide" : (index < imageIndex || (imageIndex <= 1 && index >= 4)) && !(imageIndex >= projectData.length - 3 && index <= 3) ? "slide leftRotate" : "slide rightRotate"}> {/* Unfortunately had to do some brute-force debugging for a temp fix, come back and fix for real later */}
                             <Image
                                 className="p-0 m-0 cursor-pointer"
                                 key={index}

@@ -99,9 +99,9 @@ export default function Home({init, setInit, el} : HomeProps) {
                 "distance": 200,
                     "duration": 1,
                     "easing": "ease-out-quad",
-                    "factor": 1,
+                    "factor": 5,
                     "maxSpeed": 25,
-                    "speed": 0.5
+                    "speed": 1.5
             },
             "bounce": {
                 "distance": 200
@@ -220,7 +220,7 @@ export default function Home({init, setInit, el} : HomeProps) {
             }
         },
         "color": {
-            "value": "#ffffff",
+            "value": "#d9d7d7",
                 "animation": {
                 "h": {
                     "count": 0,

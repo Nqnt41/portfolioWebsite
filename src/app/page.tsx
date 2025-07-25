@@ -86,14 +86,14 @@ export default function Page() {
     }, [docActive, section]);
 
     return (
-        <div className="relative w-full min-h-screen overflow-hidden font">
+        <div className="relative w-full overflow-hidden font h-[100%]">
             {/* NAVIGATION BAR */}
-            <header className="boxDetails fixed top-0 left-0 w-full h-[7.5%] flex items-center justify-start text-white font-bold z-15 fadeIn">
-                <nav className="flex items-center gap-4 px-4 text-3xl w-full">
+            <header className="boxDetails fixed top-0 left-0 w-full h-[7.5%] flex items-center justify-start text-white font-bold z-15 fadeIn object-contain">
+                <nav className="flex items-center gap-4 px-4 text-3xl h-[95%] w-full object-contain">
                     <img
                         src="/images/rcLogo.png"
                         alt="portfolioLogo"
-                        className="w-auto max-h-18 mr-2 align-middle hover hover:cursor-pointer"
+                        className="w-auto h-[100%] object-cover mr-2 align-middle hover hover:cursor-pointer"
                         id="scrollToTop" title="Return to Top"
                     />
                     <a href="#home" className="hover:text-blue-300 mr-2 hover">Home</a>
@@ -102,27 +102,22 @@ export default function Page() {
                     <a href="#experience" className="hover:text-blue-300 mr-2 hover">Experience</a>
                     <a href="#contact" className="hover:text-blue-300 mr-2 hover">Contact</a>
 
-                    <div className="flex items-center ml-auto">
-                        <MdEmail
-                            size={64}
-                            color="rgba(40,40,40,1)"
-                            className="bg-white rounded-full p-0.75 mt-0.75 mr-0.75 hover:bg-blue-300 hover:cursor-pointer hover"
-                            title="ryanpcoveny@gmail.com"
-                            onClick={() => window.open("mailto:ryanpcoveny@gmail.com")}
-                        />
-                        <FaLinkedin
-                            size={72}
-                            className="mx-3 text-white hover:text-blue-300 hover:cursor-pointer hover"
-                            title="linkedin.com/in/ryan-coveny/"
-                            onClick={() => window.open("https://www.linkedin.com/in/ryan-coveny/")}
-                        />
-                        <GrGithub
-                            size={70}
-                            className="text-white hover:text-blue-300 hover:cursor-pointer hover"
-                            title="github.com/Nqnt41/"
-                            onClick={() => window.open("https://www.github.com/Nqnt41/")}
-                        />
-                    </div>
+                    <MdEmail
+                        color="rgba(40,40,40,1)"
+                        className="w-auto h-[90%] ml-auto bg-white rounded-full p-0.75 hover:bg-blue-300 hover:cursor-pointer hover align-middle"
+                        title="ryanpcoveny@gmail.com"
+                        onClick={() => window.open("mailto:ryanpcoveny@gmail.com")}
+                    />
+                    <FaLinkedin
+                        className="w-auto h-[100%] text-white hover:text-blue-300 hover:cursor-pointer hover"
+                        title="linkedin.com/in/ryan-coveny/"
+                        onClick={() => window.open("https://www.linkedin.com/in/ryan-coveny/")}
+                    />
+                    <GrGithub
+                        className="w-auto h-[100%] text-white hover:text-blue-300 hover:cursor-pointer hover"
+                        title="github.com/Nqnt41/"
+                        onClick={() => window.open("https://www.github.com/Nqnt41/")}
+                    />
                 </nav>
             </header>
 

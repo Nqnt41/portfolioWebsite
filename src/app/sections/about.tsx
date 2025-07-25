@@ -99,18 +99,20 @@ export default function About( {section, setSection, prevSection, setPrevSection
     const [direction, setDirection] = useState('right');
 
     const updateSection = (next : number, useButtons : boolean) => {
-        setPrevSection(section);
+        if (section !== next) {
+            setPrevSection(section);
 
-        if (useButtons) {
-            setDirection(next > prevSection ? 'right' : 'left');
-        }
-        else {
-            setDirection((next - section + 3) % 3 === 1 ? 'right' : 'left');
-        }
+            if (useButtons) {
+                setDirection(next > prevSection ? 'right' : 'left');
+            }
+            else {
+                setDirection((next - section + 3) % 3 === 1 ? 'right' : 'left');
+            }
 
-        setTimeout(() => {
-            setSection(next);
-        }, 10)
+            setTimeout(() => {
+                setSection(next);
+            }, 10)
+        }
     };
 
     const useArrow = (left : boolean) => {

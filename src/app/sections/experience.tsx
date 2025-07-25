@@ -16,7 +16,7 @@ const experienceData : Experience[] = [
     {
         workplace: "Joey and Kimmy's Seafood Market and Restaurant",
         category: "employment",
-        position: "Software Engineer, Customer Service Staff",
+        position: "Freelance Software Engineer, Customer Service Staff",
         logo: "/images/experiences/jk.PNG",
         years: "May 2023 - Ongoing",
         location: "Vero Beach, FL",
