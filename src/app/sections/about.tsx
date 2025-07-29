@@ -145,10 +145,10 @@ export default function About( {section, setSection, prevSection, setPrevSection
         }
     }, []);
 
-    const handlers = md ? useSwipeable({
-        onSwipedLeft: () => md.mobile() ? useArrow(false) : "",
-        onSwipedRight: () => md.mobile() ? useArrow(true) : "",
-    }) : {};
+    const handlers = useSwipeable({
+        onSwipedLeft: () => (md && md.mobile() ? useArrow(false) : undefined),
+        onSwipedRight: () => (md && md.mobile() ? useArrow(true) : undefined),
+    });
 
     const ShowIcons = ({row, value} : { row: Logo[]; value: number }) => {
         let size = 0;
