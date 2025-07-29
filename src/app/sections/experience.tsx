@@ -79,7 +79,7 @@ const experienceData : Experience[] = [
     },
 ]
 
-export default function Experience( { windowWidth } ) {
+export default function Experience( { windowWidth } : { windowWidth: number } ) {
     return (
         <div id="experience" className="justify-center w-[100vw]">
             <h1 className="fadeHidden mainHeaderText text-center font-bold py-12">Experience</h1>

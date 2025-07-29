@@ -18,6 +18,7 @@ interface AboutProps {
     setSection: React.Dispatch<React.SetStateAction<number>>;
     prevSection: number;
     setPrevSection: React.Dispatch<React.SetStateAction<number>>;
+    windowWidth: number;
 }
 
 export default function About( {section, setSection, prevSection, setPrevSection, windowWidth} : AboutProps ) {
@@ -136,11 +137,18 @@ export default function About( {section, setSection, prevSection, setPrevSection
         }
     }
 
-    const md = new MobileDetect(navigator.userAgent);
-    const handlers = useSwipeable({
+    const [md, setMd] = useState<MobileDetect | null>(null);
+
+    useEffect(() => {
+        if (typeof navigator !== "undefined") {
+            setMd(new MobileDetect(navigator.userAgent));
+        }
+    }, []);
+
+    const handlers = md ? useSwipeable({
         onSwipedLeft: () => md.mobile() ? useArrow(false) : "",
         onSwipedRight: () => md.mobile() ? useArrow(true) : "",
-    });
+    }) : {};
 
     const ShowIcons = ({row, value} : { row: Logo[]; value: number }) => {
         let size = 0;

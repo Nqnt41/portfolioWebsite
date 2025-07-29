@@ -18,7 +18,7 @@ import {FaLinkedin} from "react-icons/fa6";
 import {GrGithub} from "react-icons/gr";
 
 export default function Page() {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(0);
     const el = useRef(null);
     const [init, setInit] = useState(false);
     const [section, setSection] = useState(0);

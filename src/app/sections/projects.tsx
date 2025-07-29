@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Slider from 'react-slick';
 import Image from 'next/image';
 import MobileDetect from 'mobile-detect';
@@ -165,7 +165,7 @@ const projectData: Project[] = [
     },
 ];
 
-export default function Projects( { windowWidth } ) {
+export default function Projects( { windowWidth } : { windowWidth: number } ) {
     const NextArrow = ({ onClick }: { onClick?: () => void }) => {
         return (
             <div className="arrow next" onClick={onClick}>
@@ -191,7 +191,13 @@ export default function Projects( { windowWidth } ) {
         default: size = 25;
     }
 
-    const md = new MobileDetect(navigator.userAgent);
+    const [md, setMd] = useState<MobileDetect | null>(null);
+
+    useEffect(() => {
+        if (typeof navigator !== "undefined") {
+            setMd(new MobileDetect(navigator.userAgent));
+        }
+    }, []);
 
     // Workaround for weird carousel issue. Sometimes is needed, sometimes is not, keeping just in case.
     const chooseIndex = (next : number) => {
@@ -208,7 +214,7 @@ export default function Projects( { windowWidth } ) {
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: "0",
-        swipe: md.mobile(),
+        swipe: md ? Boolean(md.mobile()) : false,
         dots: true,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
