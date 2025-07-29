@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import Image from 'next/image';
+import MobileDetect from 'mobile-detect';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
 import './projects.css';
@@ -164,7 +165,7 @@ const projectData: Project[] = [
     },
 ];
 
-export default function Projects() {
+export default function Projects( { windowWidth } ) {
     const NextArrow = ({ onClick }: { onClick?: () => void }) => {
         return (
             <div className="arrow next" onClick={onClick}>
@@ -183,6 +184,15 @@ export default function Projects() {
 
     const [imageIndex, setImageIndex] = useState(0);
 
+    let size = 0;
+    switch (true) {
+        case windowWidth > 750: size = 45; break;
+        case windowWidth > 650: size = 35; break;
+        default: size = 25;
+    }
+
+    const md = new MobileDetect(navigator.userAgent);
+
     // Workaround for weird carousel issue. Sometimes is needed, sometimes is not, keeping just in case.
     const chooseIndex = (next : number) => {
         if (next + 1 === projectData.length) {
@@ -194,10 +204,11 @@ export default function Projects() {
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: windowWidth > 900 ? 3: 1,
+        slidesToScroll: 1,
         centerMode: true,
         centerPadding: "0",
-        swipe: false,
+        swipe: md.mobile(),
         dots: true,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -208,14 +219,14 @@ export default function Projects() {
 
     return (
         <div id="projects" className="justify-center w-[100vw] pb-17 overflow-visible">
-            <h1 className="fadeHidden text-6xl text-center z-0 overflow-visible font-bold py-12">Projects</h1>
+            <h1 className="fadeHidden mainHeaderText text-center z-0 overflow-visible font-bold py-12">Projects</h1>
 
-            <div className='fadeHidden w-[95%] m-auto h-auto z-10 overflow-visible'>
+            <div className='fadeHidden w-[95%] mx-auto h-auto z-10 overflow-visible'>
                 <Slider {...settings}>
                     {projectData.map((project, index) => (
-                        <div key={index} className={index === imageIndex ? "slide activeSlide" : (index < imageIndex || (imageIndex <= 1 && index >= 4)) && !(imageIndex >= projectData.length - 3 && index <= 3) ? "slide leftRotate" : "slide rightRotate"}> {/* Unfortunately had to do some brute-force debugging for a temp fix, come back and fix for real later */}
+                        <div key={index} className={`mx-auto flex slide ${index === imageIndex ? "activeSlide" : (index < imageIndex || (imageIndex <= 1 && index >= 4)) && !(imageIndex >= projectData.length - 3 && index <= 3) ? "leftRotate" : "rightRotate"}`}> {/* Unfortunately had to do some brute-force debugging for a temp fix, come back and fix for real later */}
                             <Image
-                                className="p-0 m-0 cursor-pointer"
+                                className={`p-0 m-0 cursor-pointer ${windowWidth > 900 ? "w-[100%]" : "w-[90%]"} justify-center mx-auto`} // Justify this to center
                                 key={index}
                                 src={project.image}
                                 alt={`image-${index}`}
@@ -224,18 +235,18 @@ export default function Projects() {
                                 height={1440}
                                 onClick={() => window.open(project.link, "_blank")}
                             />
-                            <div className={`p-2 bg-gray-700 w-[100%] transitionDetails ${index === imageIndex ? "activeDetails hover:cursor-pointer" : index < imageIndex || (imageIndex === 0 && index === projectData.length - 1) ? "leftDetails" : "rightDetails"}`}>
-                                <h2 className="text-2xl font-bold cursor-pointer pb-2" onClick={() => window.open(project.link, "_blank")} title={project.link}>
+                            <div className={`mx-auto p-2 justify-center bg-gray-700 ${windowWidth > 900 ? "w-[100%]" : "w-[90%]"} transitionDetails ${index === imageIndex ? "activeDetails hover:cursor-pointer" : index < imageIndex || (imageIndex === 0 && index === projectData.length - 1) ? "leftDetails" : "rightDetails"}`}>
+                                <h2 className="headerText font-bold cursor-pointer pb-2" onClick={() => window.open(project.link, "_blank")} title={project.link}>
                                     {project.name}
                                 </h2>
-                                <div className="text-lg">{project.description}</div>
+                                <div className="projectDescText">{project.description}</div>
                                 <div className="flex justify-end space-x-1 mt-2 flex-wrap">
                                     {project.tech.map((tech, index2) => {
                                         const Icon = tech.call;
 
                                         return (
                                             <div key={tech.name} title={tech.name}>
-                                                <Icon size={40}/>
+                                                <Icon size={size}/>
                                             </div>
                                         );
                                     })}

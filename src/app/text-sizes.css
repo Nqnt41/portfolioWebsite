@@ -1,0 +1,27 @@
+.homeText {
+    font-size: clamp(1.5rem, 2vw, 1.875rem);
+}
+
+.navbarText {
+    font-size: clamp(0.6rem, 2vw, 1.875rem);
+}
+
+.mainHeaderText {
+    font-size: clamp(2.75rem, 2vw, 3.75rem);
+}
+
+.subHeaderText {
+    font-size: clamp(2.25rem, 2vw, 3rem);
+}
+
+.headerText {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.iconText {
+    font-size: clamp(0.825rem, 2vw, 1.25rem);
+}
+
+.projectDescText {
+    font-size: clamp(0.625rem, 2vw, 1.15rem);
+}

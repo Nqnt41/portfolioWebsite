@@ -547,9 +547,8 @@ export default function Home({init, setInit, el} : HomeProps) {
         if (!init || !el.current) { return }
 
         const typed = new Typed(el.current, {
-            strings: ["Hello, my name is Ryan Coveny!\nI am an Entry-Level Software Engineer."],
+            strings: ["Hello, my name is Ryan Coveny! </br> I am a Entry-Level Software Engineer."],
             typeSpeed: 15,
-            smartBackspace: true,
             backDelay: 5,
         });
 
@@ -559,16 +558,19 @@ export default function Home({init, setInit, el} : HomeProps) {
     }, [init]);
 
     return (
-        <div id="home" className="fadeHidden relative w-[100vw] h-[100vh] z-0 m-0">
+        <div id="home" className="fadeHidden relative w-[100vw] h-[100vh] z-0 m-0 flex items-center justify-center">
             <Particles
                 id='tsparticles'
                 options={options}
             />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center text-white text-4xl whitespace-pre">
-                <span ref={el} />
-                <br/>
-                <button className="text-2xl mt-3 mb-8 border-black border-solid border-1 bg-white hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md text-black font-bold" onClick={() => pdfDownload()}>Download Resume</button>
-                <button className="text-2xl ml-2 mt-1 mb-8 border-black border-solid border-1 bg-white hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md text-black font-bold" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact Me</button>
+            <div className="flex flex-col items-center justify-center w-full h-full z-10 text-center text-white text-4xl whitespace-pre">
+                <div className="max-w-[90%] homeText whitespace-normal break-words text-center">
+                    <span ref={el} />
+                </div>
+                <div className="flex flex-wrap justify-center gap-3 max-w-[90%] mt-3 text-2xl border-black border-solid border-1 border-3 cursor-pointer rounded-md text-black font-bold">
+                    <button className="p-1 bg-white hover:bg-gray-400 homeText" onClick={() => pdfDownload()}>Download Resume</button>
+                    <button className="ml-3 p-1 bg-white hover:bg-gray-400 homeText" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact Me</button>
+                </div>
             </div>
         </div>
     )
