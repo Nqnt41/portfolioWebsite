@@ -187,7 +187,7 @@ export default function About( {section, setSection, prevSection, setPrevSection
     }
 
     return (
-        <div id="about" className="justify-center w-[100vw]">
+        <div id="about" className="justify-center w-[100%]">
             <h1 className="fadeHidden mainHeaderText py-12 text-center font-bold">About</h1>
 
             <div className="fadeHidden flex flex-col lg:flex-row justify-center items-center text-lg gap-10 w-full overflow-hidden">
@@ -260,19 +260,19 @@ export default function About( {section, setSection, prevSection, setPrevSection
 
                     <div className="flex justify-center border-black text-black font-bold mt-4">
                         <button
-                            className={`${section === 0 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md`}
+                            className={`${section === 0 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 p-1 cursor-pointer rounded-md projectDescText`}
                             onClick={() => updateSection(0, true)}
                         >
                             Languages
                         </button>
                         <button
-                            className={`${section === 1 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md`}
+                            className={`${section === 1 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md projectDescText`}
                             onClick={() => updateSection(1, true)}
                         >
                             Frameworks
                         </button>
                         <button
-                            className={`${section === 2 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md`}
+                            className={`${section === 2 ? 'bg-gray-600' : 'bg-white'} hover:bg-gray-400 border-3 border-l-0 p-1 cursor-pointer rounded-md projectDescText`}
                             onClick={() => updateSection(2, true)}
                         >
                             Technologies

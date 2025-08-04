@@ -224,7 +224,7 @@ export default function Projects( { windowWidth } : { windowWidth: number } ) {
     //https://react-slick.neostack.com/docs/example/center-mode
 
     return (
-        <div id="projects" className="justify-center w-[100vw] pb-17 overflow-visible">
+        <div id="projects" className="justify-center w-[100%] pb-17 overflow-visible">
             <h1 className="fadeHidden mainHeaderText text-center z-0 overflow-visible font-bold py-12">Projects</h1>
 
             <div className='fadeHidden w-[95%] mx-auto h-auto z-10 overflow-visible'>

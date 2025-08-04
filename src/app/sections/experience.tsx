@@ -81,19 +81,20 @@ const experienceData : Experience[] = [
 
 export default function Experience( { windowWidth } : { windowWidth: number } ) {
     return (
-        <div id="experience" className="justify-center w-[100vw]">
+        <div id="experience" className="justify-center w-[100%]">
             <h1 className="fadeHidden mainHeaderText text-center font-bold py-12">Experience</h1>
 
-            <div className="flex flex-col items-center justify-center w-[100vw] h-auto ">
+            <div className="flex flex-col items-center justify-center w-[100%] h-auto ">
                 {experienceData.map((experience, index) => (
-                        <div
-                            key={index}
-                            className="flex w-[90%] mb-5 items-start hoverLite hover:cursor-pointer"
-                            title={experience.link}
-                            onClick={() => window.open(experience.link, "_blank")}
-                        >
-                            {windowWidth >= 900 && <div className="flex flex-col w-[9%] fadeHiddenX">
-                                <div className="relative aspect-square w-full">
+                    <div
+                        key={index}
+                        className="flex w-[90%] mb-5 items-start hoverLite hover:cursor-pointer"
+                        title={experience.link}
+                        onClick={() => window.open(experience.link, "_blank")}
+                    >
+                        <div className={windowWidth >= 900 ? "flex flex-col w-[9%]" : "hidden"}>
+                            <div className="fadeHiddenX">
+                                <div className="relative aspect-square">
                                     <Image
                                         src={experience.logo}
                                         alt={`image-${index}`}
@@ -105,37 +106,36 @@ export default function Experience( { windowWidth } : { windowWidth: number } ) 
                                 <div className="mt-1 text-white text-center font-bold iconText">
                                     {experience.years}
                                 </div>
-                            </div> }
-                            <div className={`bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] px-4 py-2 ml-6 fadeHiddenX ${windowWidth >= 900 ? "w-[88%]" : "w-[98%]"}`}>
-                                <div className="flex items-center gap-4 w-full">
-                                    {windowWidth < 900 && <div className="relative aspect-square min-w-[25%] max-w-[25%]">
-                                        <Image
-                                            src={experience.logo}
-                                            alt={`image-${index}`}
-                                            fill
-                                            className="rounded-xl"
-                                            sizes="100%"
-                                        />
-                                    </div>}
-
-                                    <div className="flex flex-col">
-                                        <h2 className="headerText">
-                                            <b>{experience.workplace}</b> | <i>{experience.position}</i>
-                                        </h2>
-
-                                        {windowWidth < 900 && (
-                                            <div className="mt-1 iconText text-white">
-                                                {experience.years}
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                                <ul className="list-disc iconText pl-5 pt-3">
-                                    {experience.description.map((bullet, index) => (
-                                        <li key={index} className={index === experience.description.length - 1 ? "" : "pb-2"}>{bullet}</li>
-                                    ))}
-                                </ul>
                             </div>
+                        </div>
+                        <div className={`bg-gray-700 rounded-xl border-l-3 border-gray-400 w-[88%] px-4 py-2 fadeHiddenX ${windowWidth >= 900 ? "w-[88%] ml-6" : "w-[98%]"}`}>
+                            <div className="flex items-center gap-4 w-full">
+                                {windowWidth < 900 && <div className="relative aspect-square min-w-[25%] max-w-[25%]">
+                                    <Image
+                                        src={experience.logo}
+                                        alt={`image-${index}`}
+                                        fill
+                                        className="rounded-xl"
+                                        sizes="100%"
+                                    />
+                                </div>}
+                                <div className="flex flex-col">
+                                    <h2 className="headerText">
+                                        <b>{experience.workplace}</b> | <i>{experience.position}</i>
+                                    </h2>
+                                    {windowWidth < 900 && (
+                                        <div className="mt-1 iconText text-white">
+                                            {experience.years}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <ul className="list-disc iconText pl-5 pt-3">
+                                {experience.description.map((bullet, index) => (
+                                    <li key={index} className={index === experience.description.length - 1 ? "" : "pb-2"}>{bullet}</li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 ))}
             </div>

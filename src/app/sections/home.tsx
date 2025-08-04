@@ -558,7 +558,7 @@ export default function Home({init, setInit, el} : HomeProps) {
     }, [init]);
 
     return (
-        <div id="home" className="fadeHidden relative w-[100vw] h-[100vh] z-0 m-0 flex items-center justify-center">
+        <div id="home" className="fadeHidden relative w-[100%] h-[100vh] z-0 m-0 flex items-center justify-center">
             <Particles
                 id='tsparticles'
                 options={options}
