@@ -3,6 +3,7 @@ import "tailwindcss";
 
 import "./globals.css"
 import "./navigation.css"
+import "./text-sizes.css"
 
 import Home from "./sections/home";
 import About from "./sections/about";
@@ -17,12 +18,32 @@ import {FaLinkedin} from "react-icons/fa6";
 import {GrGithub} from "react-icons/gr";
 
 export default function Page() {
+    const [windowWidth, setWindowWidth] = useState(0);
     const el = useRef(null);
     const [init, setInit] = useState(false);
     const [section, setSection] = useState(0);
     const [prevSection, setPrevSection] = useState(-1);
 
     let docActive = false;
+
+    useEffect(() => {
+        let timeoutId : any;
+
+        const handleResize = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setWindowWidth(window.innerWidth);
+            }, 1000);
+        };
+
+        setWindowWidth(window.innerWidth);
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            clearTimeout(timeoutId);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [])
 
     useEffect(() => {
         const body = document.body;
@@ -88,36 +109,36 @@ export default function Page() {
     return (
         <div className="relative w-full overflow-hidden font h-[100%]">
             {/* NAVIGATION BAR */}
-            <header className="boxDetails fixed top-0 left-0 w-full h-[7.5%] flex items-center justify-start text-white font-bold z-15 fadeIn object-contain">
-                <nav className="flex items-center gap-4 px-4 text-3xl h-[95%] w-full object-contain">
-                    <img
+            <header className="boxDetails fixed top-0 left-0 w-full h-[9%] flex items-center justify-start text-white font-bold z-15 fadeIn object-contain">
+                <nav className="flex items-center gap-4 px-4 h-[95%] w-full object-contain navbarText">
+                    {windowWidth > 600 && <img
                         src="/images/rcLogo.png"
                         alt="portfolioLogo"
                         className="w-auto h-[100%] object-cover mr-2 align-middle hover hover:cursor-pointer"
                         id="scrollToTop" title="Return to Top"
-                    />
-                    <a href="#home" className="hover:text-blue-300 mr-2 hover">Home</a>
-                    <a href="#about" className="hover:text-blue-300 mr-2 hover">About</a>
-                    <a href="#projects" className="hover:text-blue-300 mr-2 hover">Projects</a>
-                    <a href="#experience" className="hover:text-blue-300 mr-2 hover">Experience</a>
-                    <a href="#contact" className="hover:text-blue-300 mr-2 hover">Contact</a>
+                    />}
+                    <a href="#home" className="flex items-center h-full hover:text-blue-300 mr-2 hover">Home</a>
+                    <a href="#about" className="flex items-center h-full hover:text-blue-300 mr-2 hover">About</a>
+                    <a href="#projects" className="flex items-center h-full hover:text-blue-300 mr-2 hover">Projects</a>
+                    <a href="#experience" className="flex items-center h-full hover:text-blue-300 mr-2 hover">Experience</a>
+                    <a href="#contact" className="flex items-center h-full hover:text-blue-300 mr-2 hover">Contact</a>
 
-                    <MdEmail
-                        color="rgba(40,40,40,1)"
-                        className="w-auto h-[90%] ml-auto bg-white rounded-full p-0.75 hover:bg-blue-300 hover:cursor-pointer hover align-middle"
-                        title="ryanpcoveny@gmail.com"
-                        onClick={() => window.open("mailto:ryanpcoveny@gmail.com")}
-                    />
-                    <FaLinkedin
-                        className="w-auto h-[100%] text-white hover:text-blue-300 hover:cursor-pointer hover"
-                        title="linkedin.com/in/ryan-coveny/"
-                        onClick={() => window.open("https://www.linkedin.com/in/ryan-coveny/")}
-                    />
-                    <GrGithub
-                        className="w-auto h-[100%] text-white hover:text-blue-300 hover:cursor-pointer hover"
-                        title="github.com/Nqnt41/"
-                        onClick={() => window.open("https://www.github.com/Nqnt41/")}
-                    />
+                        <MdEmail
+                            color="rgba(40,40,40,1)"
+                            className={windowWidth > 900 ? "w-auto h-[90%] ml-auto bg-white rounded-full p-0.75 hover:bg-blue-300 hover:cursor-pointer hover align-middle" : "hidden"}
+                            title="ryanpcoveny@gmail.com"
+                            onClick={() => window.open("mailto:ryanpcoveny@gmail.com")}
+                        />
+                        <FaLinkedin
+                            className={windowWidth > 900 ? "w-auto h-[100%] text-white hover:text-blue-300 hover:cursor-pointer hover" : "hidden"}
+                            title="linkedin.com/in/ryan-coveny/"
+                            onClick={() => window.open("https://www.linkedin.com/in/ryan-coveny/")}
+                        />
+                        <GrGithub
+                            className={windowWidth > 900 ? "w-auto h-[100%] text-white hover:text-blue-300 hover:cursor-pointer hover" : "hidden"}
+                            title="github.com/Nqnt41/"
+                            onClick={() => window.open("https://www.github.com/Nqnt41/")}
+                        />
                 </nav>
             </header>
 
@@ -127,13 +148,13 @@ export default function Page() {
 
                 <div className="background">
                     {/* ABOUT */}
-                    <About section={section} setSection={setSection} prevSection={prevSection} setPrevSection={setPrevSection} />
+                    <About section={section} setSection={setSection} prevSection={prevSection} setPrevSection={setPrevSection} windowWidth={windowWidth} />
 
                     {/* PROJECTS */}
-                    <Projects/>
+                    <Projects windowWidth={windowWidth} />
 
                     {/* EXPERIENCE */}
-                    <Experience/>
+                    <Experience windowWidth={windowWidth}/>
 
                     {/* CONTACT */}
                     <Contact/>

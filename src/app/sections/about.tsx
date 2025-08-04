@@ -1,5 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {IoArrowBackCircleOutline, IoArrowForwardCircleOutline} from "react-icons/io5";
+import { useSwipeable } from 'react-swipeable';
+import MobileDetect from 'mobile-detect';
 
 import {
     JavascriptOriginal, TypescriptOriginal, Html5Original, Css3Original, NodejsOriginal, JunitOriginal, JavaOriginal,
@@ -16,9 +18,10 @@ interface AboutProps {
     setSection: React.Dispatch<React.SetStateAction<number>>;
     prevSection: number;
     setPrevSection: React.Dispatch<React.SetStateAction<number>>;
+    windowWidth: number;
 }
 
-export default function About( {section, setSection, prevSection, setPrevSection} : AboutProps ) {
+export default function About( {section, setSection, prevSection, setPrevSection, windowWidth} : AboutProps ) {
     interface Logo {
         name: string;
         call: any;
@@ -134,7 +137,29 @@ export default function About( {section, setSection, prevSection, setPrevSection
         }
     }
 
+    const [md, setMd] = useState<MobileDetect | null>(null);
+
+    useEffect(() => {
+        if (typeof navigator !== "undefined") {
+            setMd(new MobileDetect(navigator.userAgent));
+        }
+    }, []);
+
+    const handlers = useSwipeable({
+        onSwipedLeft: () => (md && md.mobile() ? useArrow(false) : undefined),
+        onSwipedRight: () => (md && md.mobile() ? useArrow(true) : undefined),
+    });
+
     const ShowIcons = ({row, value} : { row: Logo[]; value: number }) => {
+        let size = 0;
+        switch (true) {
+            case windowWidth > 750: size = 125; break;
+            case windowWidth > 650: size = 105; break;
+            case windowWidth > 550: size = 85; break;
+            case windowWidth > 450: size = 65; break;
+            default: size = 45;
+        }
+
         return (
             <div
                 className={`
@@ -148,9 +173,11 @@ export default function About( {section, setSection, prevSection, setPrevSection
 
                     return (
                         <div key={index} className="flex flex-col items-center mx-3 font-bold" title={unit.name}>
-                            <div className="flex flex-col items-center hover">
-                                <Icon size={125}/>
-                                <div>{unit.name.toUpperCase()}</div>
+                            <div className="flex flex-col items-center text-center hover">
+                                <div className="flex justify-center w-full">
+                                    <Icon size={size}/>
+                                </div>
+                                <div className="w-full text-center iconText">{unit.name.toUpperCase()}</div>
                             </div>
                         </div>
                     )
@@ -161,11 +188,11 @@ export default function About( {section, setSection, prevSection, setPrevSection
 
     return (
         <div id="about" className="justify-center w-[100vw]">
-            <h1 className="fadeHidden text-6xl py-12 text-center font-bold">About</h1>
+            <h1 className="fadeHidden mainHeaderText py-12 text-center font-bold">About</h1>
 
-            <div className="fadeHidden flex justify-center items-center text-lg gap-10 w-full overflow-hidden">
-                <div className="inline-block bg-gray-700 rounded-xl w-[45%] h-[95%] whitespace-pre-wrap p-2">
-                    <h1 className="text-5xl my-4 text-center font-bold">About Me</h1>
+            <div className="fadeHidden flex flex-col lg:flex-row justify-center items-center text-lg gap-10 w-full overflow-hidden">
+                <div className={`inline-block bg-gray-700 rounded-xl h-[95%] whitespace-pre-wrap p-2 ${windowWidth > 1000 ? 'w-[45%]' : 'w-[90%]'}`}>
+                    <h1 className="subHeaderText my-4 text-center font-bold">About Me</h1>
 
                     <img
                         src="/images/profileTransparent.png"
@@ -184,7 +211,7 @@ export default function About( {section, setSection, prevSection, setPrevSection
                                 alt="UF Logo"
                                 className="rounded-lg w-13 h-13 mr-2 align-middle"
                             />
-                            <div className="text-xl font-normal">
+                            <div className="iconText font-normal">
                                 <b>University of Florida</b> - 3.70 GPA<br/>
                                 Bachelor of Science in Computer Science
                             </div>
@@ -200,13 +227,13 @@ export default function About( {section, setSection, prevSection, setPrevSection
                                 alt="Joey and Kimmy's Logo"
                                 className="rounded-lg w-13 h-13 mr-2 align-middle"
                             />
-                            <div className="text-xl font-normal">
+                            <div className="iconText font-normal">
                                 <b>Joey and Kimmy's Seafood Market and Restaurant</b><br/>
                                 Software Engineer, Customer Service Staff
                             </div>
                         </div>
 
-                        <div className="text-justify p-3 text-xl">{
+                        <div className="text-justify p-3 iconText">{
                             "\"With over four years of practical experience in web development, software engineering and coding, I am an engineer fully committed to development best practices." +
                             "\n\nGraduating cum laude in Computer Science with a 3.7 GPA, I have poured countless hours into perfecting my craft as a developer through coursework, extracurricular activities, group projects, research, personal projects, and business commissioned software solutions." +
                             "\n\nI am eager to contribute my skills in creating websites and software to a team creating unique and innovative solutions!\""
@@ -214,9 +241,9 @@ export default function About( {section, setSection, prevSection, setPrevSection
                     </span>
                 </div>
 
-                <div className="fadeHidden inline-block bg-gray-700 rounded-xl w-[45%] overflow-hidden p-3">
-                    <h1 className="text-5xl my-4 text-center font-bold">{section === 0 ? "Languages" : section === 1 ? "Frameworks" : "Technologies"}</h1>
-                    <div className="flex flex-col justify-center h-full fadeHidden">
+                <div className={`fadeHidden inline-block bg-gray-700 rounded-xl w-[45%] overflow-hidden p-3 ${windowWidth > 1000 ? 'w-[45%]' : 'w-[90%]'}`}>
+                    <h1 className="subHeaderText my-4 text-center font-bold">{section === 0 ? "Languages" : section === 1 ? "Frameworks" : "Technologies"}</h1>
+                    <div className="flex flex-col justify-center h-full fadeHidden" {...handlers}>
                         {languages.map((row, index) => (
                             <ShowIcons key={index} row={row} value={0} />
                         ))}
