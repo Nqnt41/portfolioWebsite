@@ -27,10 +27,21 @@ export default function Page() {
     let docActive = false;
 
     useEffect(() => {
-        window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
+        let timeoutId : any;
 
+        const handleResize = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setWindowWidth(window.innerWidth);
+            }, 1000);
+        };
+
+        setWindowWidth(window.innerWidth);
+
+        window.addEventListener('resize', handleResize);
         return () => {
-            window.removeEventListener('resize', () => setWindowWidth(window.innerWidth));
+            clearTimeout(timeoutId);
+            window.removeEventListener('resize', handleResize);
         };
     }, [])
 
