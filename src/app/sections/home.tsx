@@ -567,9 +567,9 @@ export default function Home({init, setInit, el} : HomeProps) {
                 <div className="max-w-[90%] homeText whitespace-normal break-words text-center">
                     <span ref={el} />
                 </div>
-                <div className="flex flex-wrap justify-center gap-3 max-w-[90%] mt-3 text-2xl border-black border-solid border-1 border-3 cursor-pointer rounded-md text-black font-bold">
-                    <button className="p-1 bg-white hover:bg-gray-400 homeText" onClick={() => pdfDownload()}>Download Resume</button>
-                    <button className="ml-3 p-1 bg-white hover:bg-gray-400 homeText" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact Me</button>
+                <div className="flex flex-wrap justify-center gap-3 max-w-[90%] mt-3 text-2xl text-black font-bold">
+                    <button className="p-1 bg-white hover:bg-gray-400 border-black border-solid border-3 rounded-md cursor-pointer homeText" onClick={() => pdfDownload()}>Download Resume</button>
+                    <button className="ml-3 p-1 bg-white hover:bg-gray-400 border-black border-solid border-3 rounded-md cursor-pointer homeText" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact Me</button>
                 </div>
             </div>
         </div>

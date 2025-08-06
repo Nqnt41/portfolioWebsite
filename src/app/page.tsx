@@ -33,7 +33,7 @@ export default function Page() {
             clearTimeout(timeoutId);
             timeoutId = setTimeout(() => {
                 setWindowWidth(window.innerWidth);
-            }, 1000);
+            }, 500);
         };
 
         setWindowWidth(window.innerWidth);
