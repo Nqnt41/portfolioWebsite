@@ -164,7 +164,7 @@ export default function About( {section, setSection, prevSection, setPrevSection
             <div
                 className={`
                     ${section === value ? 'flex' : 'hidden'} 
-                    ${prevSection === -1 ? '' : direction === 'left' ? 'fadeHiddenLeft' : 'fadeHiddenRight'} 
+                    ${prevSection === -1 ? '' : direction === 'left' ? 'fadeHiddenRight' : 'fadeHiddenLeft'} 
                     grid ${row.length === 3 ? 'grid-cols-3' : row.length === 4 ? 'grid-cols-4' : 'grid-cols-5'}
                 `}
             >
