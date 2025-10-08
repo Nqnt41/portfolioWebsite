@@ -30,7 +30,7 @@ interface Project {
 const projectData: Project[] = [
     {
         name: "Joey and Kimmy's Sticker Label Printer",
-        link: "https://github.com/Nqnt41/casual-pkmn-team-builder",
+        link: "https://github.com/Nqnt41/Sticker-Label-Printer",
         image: "/images/carousel/stickerPrinter.JPG",
         description: "Developed a full-stack Electron.js app used by local restaurant staff to print and organize takeout label data. Built a responsive React.js front-end backed by a Java server managing object data using both JSON and SQL. Used Apache Spark as a custom API layer for smooth communication between the front-end and back-end.",
         tech: [
@@ -50,7 +50,7 @@ const projectData: Project[] = [
     },
     {
         name: "PokéAPI Team Builder",
-        link: "https://github.com/Nqnt41/Sticker-Label-Printer",
+        link: "https://github.com/Nqnt41/casual-pkmn-team-builder",
         image: "/images/carousel/teamBuilder.JPG",
         description: "A custom team builder for the Pokémon series of video games using data from an open source Web API. Designed to help users design and visualize their ideal teams.",
         tech: [
