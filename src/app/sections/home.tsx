@@ -547,7 +547,7 @@ export default function Home({init, setInit, el} : HomeProps) {
         if (!init || !el.current) { return }
 
         const typed = new Typed(el.current, {
-            strings: ["Hello, my name is Ryan Coveny! </br> I am a Entry-Level Software Engineer."],
+            strings: ["Hello, my name is Ryan Coveny! </br> I am a Software Developer."],
             typeSpeed: 15,
             backDelay: 5,
         });
