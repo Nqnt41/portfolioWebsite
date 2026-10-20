@@ -10,7 +10,9 @@ import {
     JsonOriginal, PowershellOriginal, BashOriginal, UnityOriginal, IntellijOriginal, ClionOriginal, VisualstudioOriginal,
     AnacondaOriginal, PandasOriginal, KerasOriginal, TensorflowOriginal, NpmOriginal, NextjsOriginal, ReactOriginal,
     PhotoshopOriginal, MayaOriginal, FigmaOriginal, TailwindcssOriginal, ReactnativeOriginal, MatplotlibOriginal,
-    AftereffectsOriginal, BlenderOriginal, SlackOriginal, PremiereproOriginal, JupyterOriginal, LinkedinOriginal
+    AftereffectsOriginal, BlenderOriginal, SlackOriginal, PremiereproOriginal, JupyterOriginal, LinkedinOriginal,
+    AzuredevopsOriginal, MicrosoftsqlserverOriginal, DockerOriginal, KubernetesOriginal, VuejsOriginal, DotNetOriginal,
+    EntityframeworkcoreOriginal, DjangoPlain, FlaskOriginal
 } from 'devicons-react';
 
 interface AboutProps {
@@ -50,29 +52,37 @@ export default function About( {section, setSection, prevSection, setPrevSection
     const frameworks : Logo[][] = [
         [
             { name: "React.js", call: ReactOriginal },
+            { name: "Vue.js", call: VuejsOriginal },
             { name: "Node.js", call: NodejsOriginal },
             { name: "Next.js", call: NextjsOriginal },
-            { name: "Tailwind", call: TailwindcssOriginal },
-            { name: "React Native", call: ReactnativeOriginal }
+            { name: "React Native", call: ReactnativeOriginal },
         ],
+        // Vue.js, .NET, SignalR, secret third thing or maybe JSON,  Entity Framework maybe, IDK
         [
+            { name: ".NET", call: DotNetOriginal },
             { name: "MySQL", call: MysqlOriginal },
             { name: "PostgreSQL", call: PostgresqlOriginal },
             { name: "MariaDB", call: MariadbOriginal },
-            { name: "Google Firebase", call: FirebaseOriginal }
         ],
         [
-            { name: "Apache Spark", call: ApachesparkOriginal },
+            { name: "Entity Framework", call: EntityframeworkcoreOriginal },
+            { name: "Tailwind", call: TailwindcssOriginal },
+            { name: "Google Firebase", call: FirebaseOriginal },
             { name: "Electron", call: ElectronOriginal },
+            { name: "Apache Spark", call: ApachesparkOriginal },
+        ],
+        [
+            { name: "JSON", call: JsonOriginal },
             { name: "JUnit", call: JunitOriginal },
             { name: "Powershell", call: PowershellOriginal },
             { name: "Bash", call: BashOriginal }
         ],
         [
+            { name: "Django", call: DjangoPlain },
+            { name: "Flask", call: FlaskOriginal },
             { name: "Pandas", call: PandasOriginal },
             { name: "Keras", call: KerasOriginal },
             { name: "Tensorflow", call: TensorflowOriginal },
-            { name: "Matplotlib", call: MatplotlibOriginal }
         ]
     ]
 
@@ -82,18 +92,25 @@ export default function About( {section, setSection, prevSection, setPrevSection
             { name: "GitHub", call: GithubOriginal },
             { name: "IntelliJ", call: IntellijOriginal },
             { name: "CLion", call: ClionOriginal },
-            { name: "Visual Studio", call: VisualstudioOriginal }
+            { name: "Visual Studio", call: VisualstudioOriginal },
+        ],
+          // Azure Devops, Teams, MSSQL, Docker, Kubernetes
+        [
+            { name: "Azure Devops", call: AzuredevopsOriginal },
+            { name: "Microsoft SQL Server", call: MicrosoftsqlserverOriginal },
+            { name: "Docker", call: DockerOriginal },
+            { name: "Kubernetes", call: KubernetesOriginal },
         ],
         [
             { name: "Figma", call: FigmaOriginal },
             { name: "Slack", call: SlackOriginal },
-            { name: "JSON", call: JsonOriginal },
-            { name: "Unity", call: UnityOriginal }
-        ],
-        [
             { name: "Anaconda", call: AnacondaOriginal },
             { name: "Jupyter", call: JupyterOriginal },
+            { name: "NPM", call: NpmOriginal },
+        ],
+        [
             { name: "Adobe Suite", call: PhotoshopOriginal },
+            { name: "Unity", call: UnityOriginal },
             { name: "Blender", call: BlenderOriginal },
             { name: "Maya", call: MayaOriginal }
         ]
@@ -153,11 +170,11 @@ export default function About( {section, setSection, prevSection, setPrevSection
     const ShowIcons = ({row, value} : { row: Logo[]; value: number }) => {
         let size = 0;
         switch (true) {
-            case windowWidth > 750: size = 125; break;
-            case windowWidth > 650: size = 105; break;
-            case windowWidth > 550: size = 85; break;
-            case windowWidth > 450: size = 65; break;
-            default: size = 45;
+            case windowWidth > 750: size = 115; break;
+            case windowWidth > 650: size = 95; break;
+            case windowWidth > 550: size = 75; break;
+            case windowWidth > 450: size = 55; break;
+            default: size = 35;
         }
 
         return (
@@ -192,15 +209,31 @@ export default function About( {section, setSection, prevSection, setPrevSection
 
             <div className="fadeHidden flex flex-col lg:flex-row justify-center items-center text-lg gap-10 w-full overflow-hidden">
                 <div className={`inline-block bg-gray-700 rounded-xl h-[95%] whitespace-pre-wrap p-2 ${windowWidth > 1000 ? 'w-[45%]' : 'w-[90%]'}`}>
-                    <h1 className="subHeaderText my-4 text-center font-bold">About Me</h1>
+                    <h1 className="subHeaderText mt-2 mb-4 text-center font-bold">About Me</h1>
 
                     <img
-                        src="/images/profileTransparent.png"
+                        src="/images/profileOrion.png"
                         alt="Profile Image"
                         className="m-auto mt-[2%] mb-[2%] rounded-4xl w-[60%] fadeHidden"
                     />
 
                     <span className="fadeHidden">
+                        <div
+                            className="inline-flex justify-start px-5 py-2 items-center hoverLite hover:cursor-pointer"
+                            onClick={() => window.open("https://www.ufl.edu/", "_blank")}
+                            title="https://www.ufl.edu/"
+                        >
+                            <img
+                                src="/images/experiences/orion180.PNG"
+                                alt="Orion180 Logo"
+                                className="rounded-lg w-13 h-13 mr-2 align-middle"
+                            />
+                            <div className="iconText font-normal">
+                                <b>Orion180 Insurance Services</b><br />
+                                Junior Software Engineer
+                            </div>
+                        </div>
+
                         <div
                             className="inline-flex justify-start px-5 py-2 items-center hoverLite hover:cursor-pointer"
                             onClick={() => window.open("https://www.ufl.edu/", "_blank")}
@@ -229,14 +262,14 @@ export default function About( {section, setSection, prevSection, setPrevSection
                             />
                             <div className="iconText font-normal">
                                 <b>Joey and Kimmy's Seafood Market and Restaurant</b><br/>
-                                Software Engineer, Customer Service Staff
+                                Freelance Software Engineer, Customer Service Staff
                             </div>
                         </div>
 
                         <div className="text-justify p-3 iconText">{
-                            "\"With over four years of practical experience in web development, software engineering and coding, I am an engineer fully committed to development best practices." +
-                            "\n\nGraduating cum laude in Computer Science with a 3.7 GPA, I have poured countless hours into perfecting my craft as a developer through coursework, extracurricular activities, group projects, research, personal projects, and business commissioned software solutions." +
-                            "\n\nI am eager to contribute my skills in creating websites and software to a team creating unique and innovative solutions!\""
+                            "\"With over five years of practical experience in software engineering, web development, and coding, I am a software engineer fully committed to development best practices." +
+                            "\n\nGraduating cum laude in Computer Science with a 3.7 GPA, I have poured countless hours into perfecting my craft as a developer through my professional work at both Orion180 and Joey and Kimmy's, my UF coursework and extracurriculars, research studies, and personally created software solutions." +
+                            "\n\nUsing the breadth of my experience, I am eager to contribute my skills in creating websites and software to a team dedicated to building unique and innovative solutions!\""
                         }</div>
                     </span>
                 </div>

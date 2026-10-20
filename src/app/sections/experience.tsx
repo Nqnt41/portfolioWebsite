@@ -14,11 +14,29 @@ interface Experience {
 
 const experienceData : Experience[] = [
     {
+        workplace: "Orion180 Insurance Services",
+        category: "employment",
+        position: "Junior Software Developer",
+        logo: "/images/experiences/orion180.PNG",
+        years: "January 2026 - November 2026",
+        location: "Melbourne, FL",
+        description: [
+            "Implemented and debugged bugs and features for My180, Orion180’s policyholder and agent facing web application.",
+            "Particularly focused on improving the user's experience when creating quotes and altering existing policies via endorsements.",
+            "Also aided in improving how insurance premiums were calculated and how functionality was implemented for flood-focused policies.",
+            "On the frontend, created new interfaces using Vue.js, as well as altered existing frontend features to improve their functionality and user experience.",
+            "On the backend, created new endpoints, modified the entity framework connectivity for certain objects, improved how premium calculations were performed, and generally worked to improve the .NET backend functionality.",
+            "Added new and beneficial database tables to the MSSQL database. Created one-time and multi-use scripts for data migration, population, and correction.",
+            "Created script generators to aid with large-scale multi-purpose SQL data creation."
+        ],
+        link: "https://joeyandkimmys.com/"
+    },
+    {
         workplace: "Joey and Kimmy's Seafood Market and Restaurant",
         category: "employment",
         position: "Freelance Software Engineer, Customer Service Staff",
         logo: "/images/experiences/jk.PNG",
-        years: "May 2023 - Ongoing",
+        years: "May 2023 - January 2026",
         location: "Vero Beach, FL",
         description: [
             "Spearheaded the development of a React.js frontend and Java backend Electron.js web application that streamlined restaurant operations. Uses JSON and MySQL for data management.",

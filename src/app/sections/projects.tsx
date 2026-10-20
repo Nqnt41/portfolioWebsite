@@ -10,9 +10,11 @@ import {
     CplusplusOriginal, CsharpOriginal, Css3Original, ElectronOriginal, FigmaOriginal, FirebaseOriginal, GithubOriginal,
     Html5Original, IntellijOriginal, JavaOriginal, JavascriptOriginal, JsonOriginal, JupyterOriginal, KerasOriginal,
     MatplotlibOriginal, MysqlOriginal, NextjsOriginal, PandasOriginal, PythonOriginal, ReactnativeOriginal,
-    ReactOriginal, TailwindcssOriginal, TensorflowOriginal, TypescriptOriginal, UnityOriginal, VisualstudioOriginal
+    ReactOriginal, TailwindcssOriginal, TensorflowOriginal, TypescriptOriginal, UnityOriginal, VisualstudioOriginal,
+    AzuredevopsOriginal, MicrosoftsqlserverOriginal, DotNetOriginal, EntityframeworkcoreOriginal
 } from "devicons-react";
 import {IoArrowBackCircleOutline, IoArrowForwardCircleOutline} from "react-icons/io5";
+import { VuejsOriginal } from 'devicons-react';
 
 interface Logo {
     name: string;
@@ -28,6 +30,26 @@ interface Project {
 }
 
 const projectData: Project[] = [
+    {
+        name: "My180",
+        link: "https://app.orion180.com",
+        image: "/images/carousel/my180.jpg",
+        description: "Aided development of My180, a web and mobile application designed for Orion180 policyholders and insurance specialists alike. Implemented new features and fixed bug tickets across the application's Vue.js frontend, .NET backend, MSSQL and Entity Framework database, and its various microservices and APIs.",
+        tech: [
+            { name: "Vue.js", call: VuejsOriginal },
+            { name: "HTML", call: Html5Original },
+            { name: "CSS", call: Css3Original },
+            { name: "C#", call: CsharpOriginal },
+            { name: ".NET", call: DotNetOriginal }, 
+            { name: "SQL", call: AzuresqldatabasePlain },
+            { name: "Microsoft SQL Server", call: MicrosoftsqlserverOriginal },
+            { name: "Entity Framework", call: EntityframeworkcoreOriginal },
+            { name: "JSON", call: JsonOriginal },
+            { name: "Azure Devops", call: AzuredevopsOriginal },
+            { name: "GitHub", call: GithubOriginal },
+            { name: "Figma", call: FigmaOriginal }
+        ]
+    },
     {
         name: "Joey and Kimmy's Sticker Label Printer",
         link: "https://github.com/Nqnt41/Sticker-Label-Printer",
@@ -67,7 +89,7 @@ const projectData: Project[] = [
         name: "Portfolio Website",
         link: "https://github.com/Nqnt41/portfolioWebsite",
         image: "/images/carousel/portfolioWebsite.JPG",
-        description: "This very website, built using Typescript, Next.js, and Tailwind, available at covenyr.com.",
+        description: "This very website, built using Typescript, Next.js, and Tailwind, available at ryanpcoveny.com.",
         tech: [
             { name: "Next.js", call: NextjsOriginal },
             { name: "React.js", call: ReactOriginal },
