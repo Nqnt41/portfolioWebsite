@@ -33,7 +33,7 @@ const projectData: Project[] = [
     {
         name: "My180",
         link: "https://app.orion180.com",
-        image: "/images/carousel/my180.jpg",
+        image: "/images/carousel/my180.JPG",
         description: "Aided development of My180, a web and mobile application designed for Orion180 policyholders and insurance specialists alike. Implemented new features and fixed bug tickets across the application's Vue.js frontend, .NET backend, MSSQL and Entity Framework database, and its various microservices and APIs.",
         tech: [
             { name: "Vue.js", call: VuejsOriginal },
