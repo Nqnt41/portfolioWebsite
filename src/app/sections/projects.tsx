@@ -89,7 +89,7 @@ const projectData: Project[] = [
         name: "Portfolio Website",
         link: "https://github.com/Nqnt41/portfolioWebsite",
         image: "/images/carousel/portfolioWebsite.JPG",
-        description: "This very website, built using Typescript, Next.js, and Tailwind, available at ryanpcoveny.com.",
+        description: "This very website, built using Typescript, Next.js, and Tailwind, available at ryancoveny.com.",
         tech: [
             { name: "Next.js", call: NextjsOriginal },
             { name: "React.js", call: ReactOriginal },

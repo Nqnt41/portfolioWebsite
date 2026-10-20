@@ -1,4 +1,4 @@
-# Hosted at www.ryanpcoveny.com
+# Hosted at www.ryancoveny.com
 
 A custom software development portfolio website built using Next.js, Typescript, and Tailwind CSS, as well as some basic HTML and CSS components.
 
