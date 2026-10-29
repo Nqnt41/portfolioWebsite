@@ -89,20 +89,44 @@ export default function Page() {
 
     useEffect(() => {
         if (docActive) {
-            const observer = new IntersectionObserver((entries) => {
+            const callback = (entries: IntersectionObserverEntry[]) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('show');
-                    } else {
+                    }
+                    else {
                         entry.target.classList.remove('show');
                     }
                 });
-            });
+            }
+
+            // Projects section requires larger threshold - threshold used to prevent issue with infinite animation loop
+            const options = {
+                rootMargin: '20px 0px 0px 0px',
+            };
+
+            const projectOptions = {
+                rootMargin: '160px 0px 0px 0px',
+            }
+
+            const observer = new IntersectionObserver(callback, options);
+            const projectObserver = new IntersectionObserver(callback, projectOptions);
 
             const hiddenElements = document.querySelectorAll('.fadeHidden, .fadeHiddenLeft, .fadeHiddenRight, .fadeHiddenX, .fadeHiddenLeftNoDelay');
-            hiddenElements.forEach((el) => observer.observe(el));
 
-            return () => observer.disconnect();
+            hiddenElements.forEach((element) => {
+                if (element.closest('#projects')) {
+                    projectObserver.observe(element);
+                }
+                else {
+                    observer.observe(element);
+                }
+            });
+
+            return () => {
+                observer.disconnect();
+                projectObserver.disconnect();
+            };
         }
     }, [docActive, section]);
 

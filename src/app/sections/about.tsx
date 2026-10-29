@@ -277,13 +277,13 @@ export default function About( {section, setSection, prevSection, setPrevSection
                 <div className={`fadeHidden inline-block bg-gray-700 rounded-xl w-[45%] overflow-hidden p-3 ${windowWidth > 1000 ? 'w-[45%]' : 'w-[90%]'}`}>
                     <h1 className="subHeaderText my-4 text-center font-bold">{section === 0 ? "Languages" : section === 1 ? "Frameworks" : "Technologies"}</h1>
                     <div className="flex flex-col justify-center h-full fadeHidden" {...handlers}>
-                        {languages.map((row, index) => (
+                        {section === 0 && languages.map((row, index) => (
                             <ShowIcons key={index} row={row} value={0} />
                         ))}
-                        {frameworks.map((row, index) => (
+                        {section === 1 && frameworks.map((row, index) => (
                             <ShowIcons key={index} row={row} value={1} />
                         ))}
-                        {technologies.map((row, index) => (
+                        {section === 2 && technologies.map((row, index) => (
                             <ShowIcons key={index} row={row} value={2} />
                         ))}
                     </div>

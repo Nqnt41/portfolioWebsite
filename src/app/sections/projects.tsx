@@ -11,10 +11,9 @@ import {
     Html5Original, IntellijOriginal, JavaOriginal, JavascriptOriginal, JsonOriginal, JupyterOriginal, KerasOriginal,
     MatplotlibOriginal, MysqlOriginal, NextjsOriginal, PandasOriginal, PythonOriginal, ReactnativeOriginal,
     ReactOriginal, TailwindcssOriginal, TensorflowOriginal, TypescriptOriginal, UnityOriginal, VisualstudioOriginal,
-    AzuredevopsOriginal, MicrosoftsqlserverOriginal, DotNetOriginal, EntityframeworkcoreOriginal
+    AzuredevopsOriginal, MicrosoftsqlserverOriginal, DotNetOriginal, EntityframeworkcoreOriginal, VuejsOriginal
 } from "devicons-react";
 import {IoArrowBackCircleOutline, IoArrowForwardCircleOutline} from "react-icons/io5";
-import { VuejsOriginal } from 'devicons-react';
 
 interface Logo {
     name: string;
@@ -254,7 +253,7 @@ export default function Projects( { windowWidth } : { windowWidth: number } ) {
                     {projectData.map((project, index) => (
                         <div key={index} className={`mx-auto flex slide ${index === imageIndex ? "activeSlide" : (index < imageIndex || (imageIndex <= 1 && index >= 4)) && !(imageIndex >= projectData.length - 3 && index <= 3) ? "leftRotate" : "rightRotate"}`}> {/* Unfortunately had to do some brute-force debugging for a temp fix, come back and fix for real later */}
                             <Image
-                                className={`p-0 m-0 cursor-pointer ${windowWidth > 900 ? "w-[100%]" : "w-[90%]"} justify-center mx-auto`} // Justify this to center
+                                className={`p-0 m-0 cursor-pointer ${windowWidth > 900 ? "w-[100%]" : "w-[90%]"} justify-center mx-auto`} 
                                 key={index}
                                 src={project.image}
                                 alt={`image-${index}`}
@@ -269,7 +268,7 @@ export default function Projects( { windowWidth } : { windowWidth: number } ) {
                                 </h2>
                                 <div className="projectDescText">{project.description}</div>
                                 <div className="flex justify-end space-x-1 mt-2 flex-wrap">
-                                    {project.tech.map((tech, index2) => {
+                                    {project.tech.map((tech) => {
                                         const Icon = tech.call;
 
                                         return (
