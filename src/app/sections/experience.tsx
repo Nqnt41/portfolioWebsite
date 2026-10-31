@@ -9,7 +9,14 @@ interface Experience {
     years: string;
     location: string;
     description: string[];
+    letters?: Letter[];
     link: string;
+}
+
+interface Letter {
+    name: string;
+    position: string;
+    fileName: string;
 }
 
 const experienceData : Experience[] = [
@@ -18,7 +25,7 @@ const experienceData : Experience[] = [
         category: "employment",
         position: "Junior Software Developer",
         logo: "/images/experiences/orion180.PNG",
-        years: "January 2026 - November 2026",
+        years: "January 2026 - October 2026",
         location: "Melbourne, FL",
         description: [
             "Implemented and debugged bugs and features for My180, Orion180’s policyholder and agent facing web application.",
@@ -29,7 +36,21 @@ const experienceData : Experience[] = [
             "Added new and beneficial database tables to the MSSQL database. Created one-time and multi-use scripts for data migration, population, and correction.",
             "Created script generators to aid with large-scale multi-purpose SQL data creation."
         ],
-        link: "https://joeyandkimmys.com/"
+        letters: [
+            {
+                name: "Melissa King",
+                position: "Software Development Manager",
+                fileName: "Melissa King - Letter of Recommendation for Ryan Coveny.pdf"
+            },
+            /*
+            {
+                name: "Bill Steinmetz",
+                position: "Senior Software Developer",
+                fileName: "Bill Steinmetz - Letter of Recommendation for Ryan Coveny.pdf"
+            }
+            */
+        ],
+        link: "https://www.orion180.com/"
     },
     {
         workplace: "Joey and Kimmy's Seafood Market and Restaurant",
@@ -79,6 +100,13 @@ const experienceData : Experience[] = [
             "Trusted to work and report out independently with little supervision.",
             "Earned a letter of recommendation from the Learning Center’s previous Senior Educator, Sara Piotter.",
         ],
+        letters: [
+            {
+                position: "Senior Educator",
+                name: "Sara Piotter",
+                fileName: "Sara Piotter - Letter of Recommendation for Ryan Coveny.pdf"
+            }
+        ],
         link: "https://www.discoverelc.org/"
     },
     {
@@ -97,6 +125,15 @@ const experienceData : Experience[] = [
     },
 ]
 
+const pdfDownload = ( { fileName } : { fileName: string } ) => {
+    const link = document.createElement("a");
+    link.href = fileName;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 export default function Experience( { windowWidth } : { windowWidth: number } ) {
     return (
         <div id="experience" className="justify-center w-[100%]">
@@ -106,6 +143,7 @@ export default function Experience( { windowWidth } : { windowWidth: number } ) 
                 {experienceData.map((experience, index) => (
                     <div
                         key={index}
+                        id="experiences"
                         className="flex w-[90%] mb-5 items-start hoverLite hover:cursor-pointer"
                         title={experience.link}
                         onClick={() => window.open(experience.link, "_blank")}
@@ -153,6 +191,26 @@ export default function Experience( { windowWidth } : { windowWidth: number } ) 
                                     <li key={index} className={index === experience.description.length - 1 ? "" : "pb-2"}>{bullet}</li>
                                 ))}
                             </ul>
+                            {experience.letters && (
+                                <div className="iconText mt-4">
+                                    {experience.letters.length === 1 ? (
+                                        <h2> Letter of Recommendation: </h2>
+                                    ) : (
+                                        <h2> Letters of Recommendation: </h2>
+                                    )}
+                                    {experience.letters.map((letter, index) => (
+                                        <div id="letters" key={index} className="pb-2">
+                                            <button className="p-1 bg-white text-black hover:bg-gray-400 border-black border-solid border-3 rounded-md cursor-pointer"
+                                                    onClick={(e) => {
+                                                        pdfDownload({ fileName: letter.fileName });
+                                                        e.stopPropagation();
+                                                    }}>
+                                                {letter.name} - {letter.position}
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}

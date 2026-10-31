@@ -17,14 +17,13 @@ export default function Home({init, setInit, el} : HomeProps) {
             await loadPolygonMaskPlugin(engine);
         }).then(() => {
             setInit(true);
-            console.log("init true");
         });
     }, []);
 
-    const pdfDownload = () => {
+    const resumeDownload = () => {
         const link = document.createElement("a");
-        link.href = "Ryan_Coveny_Resume.pdf";
-        link.download = "Ryan_Coveny_Resume.pdf";
+        link.href = "Ryan Coveny Resume.pdf";
+        link.download = "Ryan Coveny Resume.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -568,7 +567,7 @@ export default function Home({init, setInit, el} : HomeProps) {
                     <span ref={el} />
                 </div>
                 <div className="flex flex-wrap justify-center gap-3 max-w-[90%] mt-3 text-2xl text-black font-bold">
-                    <button className="p-1 bg-white hover:bg-gray-400 border-black border-solid border-3 rounded-md cursor-pointer homeText" onClick={() => pdfDownload()}>Download Resume</button>
+                    <button className="p-1 bg-white hover:bg-gray-400 border-black border-solid border-3 rounded-md cursor-pointer homeText" onClick={() => resumeDownload()}>Download Resume</button>
                     <button className="ml-3 p-1 bg-white hover:bg-gray-400 border-black border-solid border-3 rounded-md cursor-pointer homeText" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Contact Me</button>
                 </div>
             </div>
