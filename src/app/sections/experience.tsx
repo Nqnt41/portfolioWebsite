@@ -42,13 +42,11 @@ const experienceData : Experience[] = [
                 position: "Software Development Manager",
                 fileName: "Melissa King - Letter of Recommendation for Ryan Coveny.pdf"
             },
-            /*
             {
-                name: "Bill Steinmetz",
-                position: "Senior Software Developer",
-                fileName: "Bill Steinmetz - Letter of Recommendation for Ryan Coveny.pdf"
+                name: "William Steinmetz",
+                position: "Technical Lead",
+                fileName: "William Steinmetz - Letter of Recommendation for Ryan Coveny.pdf"
             }
-            */
         ],
         link: "https://www.orion180.com/"
     },

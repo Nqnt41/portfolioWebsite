@@ -16,6 +16,7 @@ import {useEffect, useRef, useState} from "react";
 import {MdEmail} from "react-icons/md";
 import {FaLinkedin} from "react-icons/fa6";
 import {GrGithub} from "react-icons/gr";
+import {TextureOverlay} from "@/components/ui/texture-overlay";
 
 export default function Page() {
     const [windowWidth, setWindowWidth] = useState(0);
@@ -168,9 +169,13 @@ export default function Page() {
 
             <div className="fadeIn text-white">
                 {/* HOME */}
+                <div className="bg-black">
                 <Home init={init} setInit={setInit} el={el}/>
+                </div>
 
                 <div className="background">
+                    <TextureOverlay texture="halftone" opacity={0.2} className="mix-blend-overlay" />
+
                     {/* ABOUT */}
                     <About section={section} setSection={setSection} prevSection={prevSection} setPrevSection={setPrevSection} windowWidth={windowWidth} />
 
