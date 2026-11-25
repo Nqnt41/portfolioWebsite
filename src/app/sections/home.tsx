@@ -22,8 +22,8 @@ export default function Home({init, setInit, el} : HomeProps) {
 
     const resumeDownload = () => {
         const link = document.createElement("a");
-        link.href = "Ryan Coveny Resume.pdf";
-        link.download = "Ryan Coveny Resume.pdf";
+        link.href = "Ryan Coveny - Resume.pdf";
+        link.download = "Ryan Coveny - Resume.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
